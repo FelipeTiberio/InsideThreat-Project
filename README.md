@@ -15,6 +15,10 @@ Sistema que permite a representação de perfis de usuários a partir de arquivo
 ##---------------------------------------------------------------
 
 	# Classes:
+	
+	[].Implementar uma class  LogfileReader.
+		Terá um map ou array com cada linha do csv. E um atributo Tipo FileWriter, (ou outro nome qualquer).
+	[].Implementar uma classe FileReader, (Log reader irar usar essa classe)
 
 	[].Implementar uma estrutura em árvore n-ária, que obedece o comportamento descrito no arquivo do projeto 
 
@@ -37,6 +41,7 @@ Sistema que permite a representação de perfis de usuários a partir de arquivo
 	[]. Tratamento dos dados que estão nos arquivos de log.
 	[]. Tratar erros de leitura de arquivos.
 	[]. Tratar qualquer outro tipo de erro identificado.
+	[]. Colocar os arquivos em pacotes no modelo MVC.
 # -------------------------------------------------------------
 	
 	[]. Salvar o perfil do usuário em um arquivo de log.
