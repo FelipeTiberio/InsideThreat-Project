@@ -16,6 +16,10 @@ Sistema que permite a representação de perfis de usuários a partir de arquivo
 
 	# Classes:
 	
+	(Para o primeiro nivel da árvore será necessário )
+	[].Implementar uma classe observations, (irá fica no primeiro nível da TreeProfile)
+		Ainda não sei bem quais atributos irei precisar.
+	
 	[].Implementar uma class  LogfileReader.
 		Terá um map ou array com cada linha do csv. E um atributo Tipo FileWriter, (ou outro nome qualquer).
 
