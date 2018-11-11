@@ -55,4 +55,11 @@ public class User {
 		this.role = role;
 	}
 
+
+	@Override
+	public String toString() {
+		return "User [user_id=" + user_id + "]";
+	}
+
+	
 }

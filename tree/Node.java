@@ -5,8 +5,8 @@ import java.util.List;
 * Baseada em https://www.javagists.com/java-tree-data-structure **/
 
 /**@TODO
-* È necessário criar um classe, usando uma matriz provavelmento,
-* para o historograma de cada nó.
+* Ãˆ necessÃ¡rio criar um classe, usando uma matriz provavelmento,
+* para o historograma de cada nÃ³.
  */
 
 public class Node<T> {
@@ -21,12 +21,12 @@ public class Node<T> {
 		 this.data = data;
 	}
 
-	/**Adiciona um filho a um Ńode, @return retorna o filho adicionado */
+	/**Adiciona um filho a um Åƒode, @return retorna o filho adicionado */
  
-	public Node<T> addChild(Node<T> child) {
+	public void addChild(Node<T> child) {
 		child.setParent(this);
 		this.children.add(child);
-		return child;
+		
 	}
 
 	//**Add filhos a um Node a partir de um List de Nodes **/
@@ -42,13 +42,13 @@ public class Node<T> {
  		return children;
  	}
 
- 	/**@return retorna o canteúdo armazenado em um nó */
+ 	/**@return retorna o canteÃºdo armazenado em um nÃ³ */
 
  	public T getData() {
  		return data;
  	}
 
- 	/**Método usado guarda dados a um nó */
+ 	/**MÃ©todo usado guarda dados a um nÃ³ */
  
  	public void setData(T data) {
  		this.data = data;
@@ -62,14 +62,36 @@ public class Node<T> {
 		return parent;
 	}
 
-	/**@return Retorna a raiz a partir de qualquer nó **/
+	/**@return Retorna a raiz a partir de qualquer nÃ³ **/
 
-	public Node getRoot() {
+	public Node<T> getRoot() {
  		if(parent == null){
   			return this;
  		}
  			return parent.getRoot();
 	}
+	
+	
+	/**
+	 * Método debug para imprimir a árvore @TODO lembrar de pagar 
+	 * É NECESSÁRIO IMPLEMENTAR O MÉTODO TO STRING DE CADA NO QUE ESTÁ EM DATA
+	 */
+	public  void printTree(String separador) {
+		_preintTree(this, separador);
+	}
+	
+	/**
+	 * Método debug para imprimir a árvore @TODO lembrar de pagar 
+	 * @param separador
+	 */
+	
+	public static <T> void _preintTree(Node<T> node, String appender) {
+		System.out.println(appender + node.getData());
+		   node.getChildren().forEach(each -> _preintTree(each, appender + appender));
+	}
+		
+		
+		
+		
+	}
  
-}
-

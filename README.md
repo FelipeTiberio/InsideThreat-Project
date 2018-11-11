@@ -18,6 +18,9 @@ Sistema que permite a representação de perfis de usuários a partir de arquivo
 	
 	[].Implementar uma class  LogfileReader.
 		Terá um map ou array com cada linha do csv. E um atributo Tipo FileWriter, (ou outro nome qualquer).
+
+	[].Implementar uma classe TreeProfile, essa classe irá gerenciar cada um dos nós da árvore.
+	
 	[].Implementar uma classe FileReader, (Log reader irar usar essa classe)
 
 	[].Implementar uma classe que ficará na camada de controle criando os perfices de cada usuário.
