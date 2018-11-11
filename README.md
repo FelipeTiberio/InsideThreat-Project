@@ -20,6 +20,8 @@ Sistema que permite a representação de perfis de usuários a partir de arquivo
 		Terá um map ou array com cada linha do csv. E um atributo Tipo FileWriter, (ou outro nome qualquer).
 	[].Implementar uma classe FileReader, (Log reader irar usar essa classe)
 
+	[].Implementar uma classe que ficará na camada de controle criando os perfices de cada usuário.
+	
 	[].Implementar uma estrutura em árvore n-ária, que obedece o comportamento descrito no arquivo do projeto 
 
 	[].Implementar uma classe User, com os atributos iniciais:
