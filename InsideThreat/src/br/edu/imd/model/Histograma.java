@@ -15,8 +15,8 @@ public class Histograma {
 		return histograma;
 	}
 
-	public void setHistograma(int[] histograma) {
-		this.histograma = histograma;
+	public void add(int valor, int id) {
+		histograma[id]+=valor;
 	}
 	
 	
