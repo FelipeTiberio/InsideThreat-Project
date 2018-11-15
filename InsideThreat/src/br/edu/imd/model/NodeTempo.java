@@ -12,7 +12,7 @@ public class NodeTempo implements Node<Tempo,Devices> {
 		 this.data = data;
 	}
 	
-	public void setParent(Node<User,Tempo> parent) {
+	public void setParent(NodeUser parent) {
 		this.parent = parent;
 	}
 

@@ -3,12 +3,12 @@ package br.edu.imd.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NodeUSer  implements Node<User,Tempo>{
+public class NodeUser  implements Node<User,Tempo>{
 	private User data = null;
 	private List<NodeTempo> children = new ArrayList<NodeTempo>();
 	//private Node<T> parent = null;
 	
-	public NodeUSer(User data) {
+	public NodeUser(User data) {
 		 this.data = data;
 	}
 
@@ -50,6 +50,7 @@ public class NodeUSer  implements Node<User,Tempo>{
 	 * Método debug para imprimir a árvore @TODO lembrar de pagar 
 	 * É NECESSÁRIO IMPLEMENTAR O MÉTODO TO STRING DE CADA NO QUE ESTÁ EM DATA
 	 */
+ 	
  	/*
 	public  void printTree(String separador) {
 		_preintTree(this, separador);
