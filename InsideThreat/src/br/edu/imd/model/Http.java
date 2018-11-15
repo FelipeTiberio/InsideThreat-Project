@@ -1,4 +1,6 @@
-package csvReader;
+package br.edu.imd.model;
+
+
 
 public class Http extends Activity{
 	
