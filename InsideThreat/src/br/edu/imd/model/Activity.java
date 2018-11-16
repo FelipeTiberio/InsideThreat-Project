@@ -2,7 +2,7 @@ package br.edu.imd.model;
 
 
 
-public abstract class Activity {
+public abstract class Activity  {
 	private String id;
 	private String date;
 	private String user;
@@ -29,7 +29,7 @@ public abstract class Activity {
 	}
 	@Override
 	public String toString() {
-		return "Activity [getId()=" + getId() + "]";
+		return "Activity [getId()=" + getId() + "]" ;
 	}
 	public String getUser() {
 		return user;
@@ -43,5 +43,13 @@ public abstract class Activity {
 	public void setPc(String pc) {
 		this.pc = pc;
 	}
+	
+
+	 public boolean equals(Activity obj) {
+          if(this.id.equals(obj.getId() )) {
+        		  return true;
+          }
+		return false;
+     }
 
 }

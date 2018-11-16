@@ -20,4 +20,11 @@ public class Http extends Activity{
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String toString() {
+		return "Http [url=" + url + "]";
+	}
+	
+	
+
 }

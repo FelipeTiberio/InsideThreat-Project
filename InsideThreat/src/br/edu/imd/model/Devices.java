@@ -1,10 +1,7 @@
 package br.edu.imd.model;
 
 
-
-
-
-public class Devices extends Activity {
+public class Devices  extends Activity{
 	
 	private String activity;
 
@@ -22,7 +19,6 @@ public class Devices extends Activity {
 	public void setActivity(String activity) {
 		this.activity = activity;
 	}
-	
-	
+
 
 }
