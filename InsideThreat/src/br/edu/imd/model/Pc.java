@@ -2,7 +2,7 @@ package br.edu.imd.model;
 
 public class Pc {
 	private String name;
-	
+
 	public Pc(String name) {
 		super();
 		this.name = name;
@@ -20,8 +20,4 @@ public class Pc {
 	public String toString() {
 		return "Pc [name=" + name + "]";
 	}
-	
-	
-	
-	
 }

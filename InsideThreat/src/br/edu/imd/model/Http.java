@@ -1,9 +1,6 @@
 package br.edu.imd.model;
 
-
-
 public class Http extends Activity{
-	
 	private String url;
 
 	public String getUrl() {
@@ -17,14 +14,10 @@ public class Http extends Activity{
 	public Http(String id, String date, String user, String pc, String url) {
 		super(id, date, user, pc);
 		this.url = url;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
 		return "Http [url=" + url + "]";
 	}
-	
-	
-
 }

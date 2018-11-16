@@ -7,28 +7,17 @@ public class Tempo {
 	boolean ifall;
 	Date inicio = null;
 	Date fim = null;
-	
-	public Tempo( ){
+
+	public Tempo( ) {
 		ifall = true;
 		this.n_devices = 0;
 	}
-	
+
 	public Tempo(Date inicio, Date fim) {
 		this.inicio = inicio;
 		this.fim = fim;
 		this.n_devices = 0;
 		this.ifall = false;
-		
-	}
-
-	public int getN_devices() {
-		return n_devices;
-	}
-	
-	
-	@Override
-	public String toString() {
-		return "Tempo [ifall=" + ifall + "]";
 	}
 
 	public boolean isIfall() {
@@ -37,6 +26,10 @@ public class Tempo {
 
 	public void setIfall(boolean ifall) {
 		this.ifall = ifall;
+	}
+
+	public int getN_devices() {
+		return n_devices;
 	}
 
 	public Date getInicio() {
@@ -58,6 +51,9 @@ public class Tempo {
 	public void setN_devices(int n_devices) {
 		this.n_devices = n_devices;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Tempo [ifall=" + ifall + "]";
+	}
 }
