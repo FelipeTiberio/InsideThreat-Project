@@ -3,12 +3,12 @@ package br.edu.imd.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NodeDevices implements Node<Devices,Activity>{
-	private  Devices data = null;
+public class NodePc implements Node<Pc,Activity>{
+	private  Pc data = null;
 	private  NodeTempo parent  = null;
 	private  List<NodeActivity> children = new ArrayList<NodeActivity>();
 	
-	public NodeDevices(Devices data) {
+	public NodePc(Pc data) {
 		this.data = data;	
 	}
 	
@@ -37,13 +37,13 @@ public class NodeDevices implements Node<Devices,Activity>{
 
  	/**@return retorna o canteÃºdo armazenado em um nÃ³ */
 
- 	public Devices getData() {
+ 	public Pc getData() {
  		return data;
  	}
 
  	/**MÃ©todo usado guarda dados a um nÃ³ */
  
- 	public void setData(Devices data) {
+ 	public void setData(Pc data) {
  		this.data = data;
  	}
  

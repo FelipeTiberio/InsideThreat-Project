@@ -6,7 +6,7 @@ import java.util.List;
 public class NodeTempo implements Node<Tempo,Devices> {
 	private  Tempo data = null;
 	private  Node<User,Tempo> parent  = null;
-	private  List<NodeDevices> children = new ArrayList<NodeDevices>();
+	private  List<NodePc> children = new ArrayList<NodePc>();
 	
 	public NodeTempo(Tempo data) {
 		 this.data = data;
@@ -17,7 +17,7 @@ public class NodeTempo implements Node<Tempo,Devices> {
 	}
 
 	/**Adiciona um filho a um Åƒode, @return retorna o filho adicionado */
-	public void addChild(NodeDevices  child) {
+	public void addChild(NodePc  child) {
 		child.setParent(this);
 		this.children.add(child);
 		
@@ -25,14 +25,14 @@ public class NodeTempo implements Node<Tempo,Devices> {
 
 	//**Add filhos a um Node a partir de um List de Nodes **/
 
-	public void addChildren(List<NodeDevices>children) {
+	public void addChildren(List<NodePc>children) {
 	 	children.forEach(each -> each.setParent(this));
 	 	this.children.addAll(children);
  	}
 
  	/**@return retorna uma lista com todos os filhos de um node*/
 
- 	public List<NodeDevices> getChildren() {
+ 	public List<NodePc> getChildren() {
  		return children;
  	}
 
