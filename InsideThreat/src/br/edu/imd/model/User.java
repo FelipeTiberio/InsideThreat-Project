@@ -1,6 +1,6 @@
 package br.edu.imd.model;
 
-public class User {
+public class User implements Comparable<User>{
 	private String employer_name;
 	private String user_id;
 	private String email;
@@ -70,6 +70,15 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [user_id=" + user_id + "]";
+	}
+
+	@Override
+	public int compareTo(User user) {
+		if(this.getDistance_value() < user.getDistance_value()) {
+			return -1;			
+		} else if(this.getDistance_value() > user.getDistance_value())
+			return 1;	
+		return 0;
 	}
 
 }

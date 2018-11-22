@@ -19,6 +19,8 @@ public class Histograma {
 		histograma[id]+=valor;
 	}
 	
-	
+	public int getValue(int index) {
+		return histograma[index];
+	}
 
 }

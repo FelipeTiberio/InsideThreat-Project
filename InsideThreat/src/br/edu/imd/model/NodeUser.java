@@ -5,6 +5,7 @@ import java.util.List;
 
 public class NodeUser  implements Node<User,Tempo>{
 	private User data = null;
+	private Histograma histogram;
 	private List<NodeTempo> children = new ArrayList<NodeTempo>();
 	//private Node<T> parent = null;
 
@@ -12,7 +13,7 @@ public class NodeUser  implements Node<User,Tempo>{
 		 this.data = data;
 	}
 
-	/**Adiciona um filho a um Åƒode, @return retorna o filho adicionado */
+	/**Adiciona um filho a um Ã…Æ’ode, @return retorna o filho adicionado */
 	public void addChild(NodeTempo child) {
 		child.setParent(this);
 		this.children.add(child);
@@ -29,20 +30,28 @@ public class NodeUser  implements Node<User,Tempo>{
  		return children;
  	}
 
- 	/**@return retorna o canteÃºdo armazenado em um nÃ³ */
+ 	/**@return retorna o canteÃƒÂºdo armazenado em um nÃƒÂ³ */
  	public User getData() {
  		return data;
  	}
 
- 	/**MÃ©todo usado guarda dados a um nÃ³ */
+ 	/**MÃƒÂ©todo usado guarda dados a um nÃƒÂ³ */
  	public void setData(User data) {
  		this.data = data;
  	}
 
+	public Histograma getHistogram() {
+		return histogram;
+	}
+
+	public void setHistogram(Histograma histogram) {
+		this.histogram = histogram;
+	}
+
 
 	/**
-	 * Método debug para imprimir a árvore @TODO lembrar de pagar
-	 * É NECESSÁRIO IMPLEMENTAR O MÉTODO TO STRING DE CADA NO QUE ESTÁ EM DATA
+	 * MÃ©todo debug para imprimir a Ã¡rvore @TODO lembrar de pagar
+	 * Ã‰ NECESSÃ�RIO IMPLEMENTAR O MÃ‰TODO TO STRING DE CADA NO QUE ESTÃ� EM DATA
 	 */
 
  	/*
@@ -51,7 +60,7 @@ public class NodeUser  implements Node<User,Tempo>{
 	}*/
 
 	/**
-	 * Método debug para imprimir a árvore @TODO lembrar de pagar
+	 * MÃ©todo debug para imprimir a Ã¡rvore @TODO lembrar de pagar
 	 * @param separador
 	 */
 	/*
