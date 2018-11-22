@@ -6,8 +6,9 @@ public class User {
 	private String email;
 	private String domain;
 	private String role;
+	private double distance_value;
 
-	public User() {}
+	public User(){}
 
 	public User(String employer_name, String user_id, String email, String domain, String role) {
 		super();
@@ -57,9 +58,18 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+	public double getDistance_value() {
+		return distance_value;
+	}
+
+	public void setDistance_value(double distance_value) {
+		this.distance_value = distance_value;
+	}
 
 	@Override
 	public String toString() {
 		return "User [user_id=" + user_id + "]";
 	}
+
 }
