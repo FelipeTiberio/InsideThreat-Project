@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import br.edu.imd.model.NodeUser;
 
 public class KeepTrees {
-	ArrayList<NodeUser> users;
+	ArrayList<ProfileTree> users;
 	ArrayList<NodeUser> usersAverangeProfile;
 	
-	public ArrayList<NodeUser> getUsers(){
+	public ArrayList<ProfileTree> getUsers(){
 		return users;
 	}
 	

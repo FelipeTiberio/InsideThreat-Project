@@ -24,7 +24,7 @@ public class AnomalyAnalysis {
 				return false;
 			
 		} else {
-			System.out.println("Usuário não existe ou não existe histograma de perfil médio do seu"
+			System.out.println("Usuï¿½rio nï¿½o existe ou nï¿½o existe histograma de perfil mï¿½dio do seu"
 					+ "papel definido.");
 		}
 		
@@ -32,8 +32,8 @@ public class AnomalyAnalysis {
 	}
 	
 	public void enterDistanceValue() {
-		for(NodeUser nodeUser : keep.getUsers()) {
-			createDistanceValue(nodeUser.getData());
+		for(ProfileTree nodeUser : keep.getUsers()) {
+			createDistanceValue(nodeUser.raiz().getData());
 		}
 	}
 
@@ -43,9 +43,9 @@ public class AnomalyAnalysis {
 		Histograma userHistogram = new Histograma();
 		Histograma averangeProfileHistogram = new Histograma();
 		
-		for(NodeUser nodeUser : keep.getUsers()) {
-			if(nodeUser.getData().getUser_id().equals(user.getUser_id())) {
-				userHistogram = nodeUser.getHistogram();
+		for(ProfileTree nodeUser : keep.getUsers()) {
+			if(nodeUser.raiz().getData().getUser_id().equals(user.getUser_id())) {
+				userHistogram = nodeUser.raiz().getHistogram();
 			}
 		}
 		
@@ -67,8 +67,8 @@ public class AnomalyAnalysis {
 	public ArrayList<User> createRanking(){
 		ArrayList<User> ranking = new ArrayList<User>();
 		
-		for(NodeUser nodeUser : keep.getUsers()) {
-			ranking.add(nodeUser.getData());
+		for(ProfileTree nodeUser : keep.getUsers()) {
+			ranking.add(nodeUser.raiz().getData());
 		}
 		
 		Collections.sort(ranking);
