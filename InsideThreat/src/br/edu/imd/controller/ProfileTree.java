@@ -1,4 +1,5 @@
 package br.edu.imd.controller;
+import java.util.ArrayList;
 import java.util.Date;
 
 import br.edu.imd.model.*;
@@ -56,6 +57,12 @@ public class ProfileTree {
 	
 	public boolean addActivity(Activity activity) {
 		NodePc pc = buscaPc(activity.getPc()); // Buscas se o pc correspondente a atividade já existe na árvore 
+		String data[] = new String[2];
+		String hora[] = new String[3];
+		data = activity.getDate().split(" ");
+		int horaInt;
+		
+		
 		
 		if(pc != null) { // Caso o pc já exista, busca se atividade já exista, caso não exista então, então add nova atividade
 			for(NodeActivity act : pc.getChildren()) {
@@ -64,6 +71,12 @@ public class ProfileTree {
 				}	
 			}
 			pc.addChild(new NodeActivity(activity));// Add novo nó com a atividade  no pc correspondente 
+			
+			// Código abaixo adcionar 1 no contador de atividades do histograma user
+			hora = data[1].split(":");
+			horaInt = Integer.parseInt(hora[0]);
+			this.raiz.addToHistogra(1, horaInt);
+			
 			return true;
 			
 			
@@ -71,6 +84,11 @@ public class ProfileTree {
 			NodePc newPc = new NodePc(new Pc(activity.getPc()));
 			raiz.getChildren().get(0).addChild(newPc);
 			newPc.addChild(new NodeActivity(activity));
+			hora = data[1].split(":");
+			
+			// Código abaixo adcionar 1 no contador de atividades do histograma user
+			horaInt = Integer.parseInt(hora[0]);
+			this.raiz.addToHistogra(1, horaInt);
 			
 		return true;
 		

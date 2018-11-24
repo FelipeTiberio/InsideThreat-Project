@@ -14,6 +14,14 @@ public class Debug {
 	
 	tree.preintTree(tree.raiz()," ");
 	
+	// Teste do Histograma de user
+	System.out.println("** Teste, primintado o histograma de NodeUser");
+	for(int hist : tree.raiz().getHistogram().getHistograma()) {
+		System.out.print(hist + "|");
+		
+	}
+	System.out.println();
+	
 	}
 	
 

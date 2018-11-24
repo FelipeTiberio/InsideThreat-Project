@@ -48,27 +48,14 @@ public class NodeUser  implements Node<User,Tempo>{
 		this.histogram = histogram;
 	}
 
-
 	/**
-	 * MÃ©todo debug para imprimir a Ã¡rvore @TODO lembrar de pagar
-	 * Ã‰ NECESSÃ�RIO IMPLEMENTAR O MÃ‰TODO TO STRING DE CADA NO QUE ESTÃ� EM DATA
+	 * Recebe um valor para ser acresentado no array do histograma no param id
+	 * @param valor
+	 * @param id
 	 */
 
- 	/*
-	public  void printTree(String separador) {
-		_preintTree(this, separador);
-	}*/
-
-	/**
-	 * MÃ©todo debug para imprimir a Ã¡rvore @TODO lembrar de pagar
-	 * @param separador
-	 */
-	/*
-	private static  void _preintTree(NodeUSer node, String appender) {
-		System.out.println(appender + node.getData());
-		   node.getChildren().forEach(each -> _preintTree(each, appender + appender));
-	}*/
-
-
+	public void addToHistogra(int valor, int id) {
+		this.histogram.add(valor, id);
+	}
 
 }
