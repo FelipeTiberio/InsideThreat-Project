@@ -17,6 +17,7 @@ public class User implements Comparable<User>{
 		this.email = email;
 		this.domain = domain;
 		this.role = role;
+		this.distance_value = 0;
 	}
 
 	public String getEmployer_name() {

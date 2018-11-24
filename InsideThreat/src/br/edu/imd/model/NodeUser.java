@@ -5,7 +5,7 @@ import java.util.List;
 
 public class NodeUser  implements Node<User,Tempo>{
 	private User data = null;
-	private Histograma histogram;
+	private Histograma histogram = new Histograma();
 	private List<NodeTempo> children = new ArrayList<NodeTempo>();
 	//private Node<T> parent = null;
 

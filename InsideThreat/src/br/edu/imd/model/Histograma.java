@@ -1,7 +1,7 @@
 package br.edu.imd.model;
 
 public class Histograma {
-	int histograma[] ;
+	int histograma[];
 
 	public Histograma() {
 		this.histograma = new int[24];

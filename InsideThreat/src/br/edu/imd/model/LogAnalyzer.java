@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class LogAnalyzer {
 	// Usado para armazenar as linhas dos arquivos
 	private List<String[]> entries = new ArrayList<>();
