@@ -40,7 +40,7 @@ public class KeepTrees {
 		return users;
 	}
 
-	// Retorna o arrayList que armazena os úsuarios de perfil médio de cada papel
+	// Retorna o arrayList que armazena os perfis médios de cada papel
 	public ArrayList<NodeUser> getUsersAverangeProfile(){
 		return usersAverangeProfile;
 	}
