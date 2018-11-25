@@ -24,10 +24,10 @@ public class AnomalyAnalysis {
 			double valueAux = 0;
 			String roleAux = user.getRole();
 			
-			for(NodeUser nodeUser : keep.getUsers()) {
-				if(nodeUser.getData().getRole().equals(roleAux)) {
+			for(ProfileTree nodeUser : keep.getUsers()) {
+				if(nodeUser.raiz().getData().getRole().equals(roleAux)) {
 					contAux++;
-					valueAux += nodeUser.getData().getDistance_value();
+					valueAux += nodeUser.raiz().getData().getDistance_value();
 				}
 			}
 			
