@@ -20,7 +20,20 @@ public class AnomalyAnalysis {
 		
 		if(this.searchUser(user) && this.searchAverangeProfile(user)) {	
 			
-			if(user.getDistance_value() <= 2 && user.getDistance_value() > 0) 
+			int contAux = 0;
+			double valueAux = 0;
+			String roleAux = user.getRole();
+			
+			for(NodeUser nodeUser : keep.getUsers()) {
+				if(nodeUser.getData().getRole().equals(roleAux)) {
+					contAux++;
+					valueAux += nodeUser.getData().getDistance_value();
+				}
+			}
+			
+			valueAux = valueAux/contAux;
+			
+			if(user.getDistance_value() <= valueAux && user.getDistance_value() > 0) 
 				return false;
 			
 		} else {

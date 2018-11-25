@@ -60,11 +60,11 @@ public class BildPerfil {
 		String url;
 
 		for(String[] line : data) {
-			id = line[0];
+			id 	 = line[0];
 			date = line[1];
 			user = line[2];
-			pc = line[3];
-			url = line[4];
+			pc   = line[3];
+			url  = line[4];
 
 			Http auxHttp= new Http(id, date, user, pc, url);
 			http.add(auxHttp);
@@ -90,10 +90,10 @@ public class BildPerfil {
 		String activity;
 
 		for(String[] line : data) {
-			id = line[0];
-			date = line[1];
-			user = line[2];
-			pc = line[3];
+			id   	 = line[0];
+			date 	 = line[1];
+			user 	 = line[2];
+			pc       = line[3];
 			activity = line[4];
 
 			Logon auxLogon= new Logon(id, date, user, pc, activity);
@@ -120,10 +120,10 @@ public class BildPerfil {
 		String activity;
 
 		for(String[] line : data) {
-			id = line[0];
-			date = line[1];
-			user = line[2];
-			pc = line[3];
+			id 		 = line[0];
+			date 	 = line[1];
+			user 	 = line[2];
+			pc 		 = line[3];
 			activity = line[4];
 
 			Devices auxDevice = new Devices(id, date, user, pc, activity);
