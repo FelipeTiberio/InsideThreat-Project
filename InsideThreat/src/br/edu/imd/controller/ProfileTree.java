@@ -33,7 +33,6 @@ public class ProfileTree {
 	 * @param nomePc String correspondente a o nume de um ṕc
 	 * @return retorna true se o pc já estiver na árvore, false caso contrário 
 	 */
-	
 	public NodePc buscaPc(String nomePc) {
 		for(NodeTempo tempo : raiz.getChildren()) {
 			for(NodePc pc : tempo.getChildren()) {
@@ -53,16 +52,12 @@ public class ProfileTree {
 	 * @param activity
 	 * @return
 	 */
-	
-	
 	public boolean addActivity(Activity activity) {
 		NodePc pc = buscaPc(activity.getPc()); // Buscas se o pc correspondente a atividade já existe na árvore 
 		String data[] = new String[2];
 		String hora[] = new String[3];
 		data = activity.getDate().split(" ");
 		int horaInt;
-		
-		
 		
 		if(pc != null) { // Caso o pc já exista, busca se atividade já exista, caso não exista então, então add nova atividade
 			for(NodeActivity act : pc.getChildren()) {
@@ -79,7 +74,6 @@ public class ProfileTree {
 			
 			return true;
 			
-			
 		} // caso o pc não exista então primeiro irá criar um no para o pc, só depois add nova atividade
 			NodePc newPc = new NodePc(new Pc(activity.getPc()));
 			raiz.getChildren().get(0).addChild(newPc);
@@ -91,7 +85,6 @@ public class ProfileTree {
 			this.raiz.addToHistogra(1, horaInt);
 			
 		return true;
-		
 	}
 	
 	public NodeUser raiz() {
