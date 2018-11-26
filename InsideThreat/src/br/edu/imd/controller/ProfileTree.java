@@ -98,6 +98,16 @@ public class ProfileTree {
 			preintTree(n, appender + appender);
 		}
 	}
+        
+        // Busca se uma determinada atividade já existe na árvore, se sim retorna true, senão false 
+        /**
+         * @TODO implemente logo a classe abaixo, também exites um TODO na classe KeepTree
+         * @param activity
+         * @return 
+         */
+        public boolean existeAtividade(Activity activity){
+           return false; 
+        };
 
 
 }

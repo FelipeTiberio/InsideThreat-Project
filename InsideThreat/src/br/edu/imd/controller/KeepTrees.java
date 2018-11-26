@@ -33,7 +33,7 @@ public class KeepTrees {
 	public void addHttp(ArrayList<Http> buildHttp) {
            ProfileTree user;
            for(Http http : buildHttp){
-               user = this.owner_activity(http);
+               user =  this.users.get( this.owner_activity(http));
                user.addActivity(http);
            }
             
@@ -43,7 +43,7 @@ public class KeepTrees {
 	public void addLogon(ArrayList<Logon> buildLogon) {
           ProfileTree user;
            for(Logon logon : buildLogon){
-               user = this.owner_activity(logon);
+               user =  this.users.get( this.owner_activity(logon));
                user.addActivity(logon);
            }
 	
@@ -54,7 +54,7 @@ public class KeepTrees {
 	public void addDevices(ArrayList<Devices> buildDevices) {
            ProfileTree user;
            for(Devices dev : buildDevices){
-               user = this.owner_activity(dev);
+               user =  this.users.get( this.owner_activity(dev));
                user.addActivity(dev);
            }
 		
@@ -87,8 +87,18 @@ public class KeepTrees {
             this.users.add(new ProfileTree(newUser));
         }
         
-        // Método recebe uma atividade e identifica qual é o usuário que tem aqule atividade
-        public ProfileTree owner_activity(Activity novaAtividade){
-            return null;
+        // método retorna o id do dono de uma derterminda atividade 
+        // Caso o usuário não esita criar um novo usuário e retorna o seu id
+        
+        public int owner_activity(Activity novaAtividade){
+            int n = 0;
+            for(ProfileTree user : users){ // Busca em user quem  é o dono da novaAtividade
+                if(user.existeAtividade(novaAtividade)){
+                    return n;
+                }else{
+                    n++;
+                }
+            }
+            return n;
         }
 }
