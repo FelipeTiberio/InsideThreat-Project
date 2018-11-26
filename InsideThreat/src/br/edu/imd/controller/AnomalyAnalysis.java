@@ -7,15 +7,30 @@ import br.edu.imd.model.Histograma;
 import br.edu.imd.model.NodeUser;
 import br.edu.imd.model.User;
 
+/**
+ * Classe AnomalyAnalysis será responsável por verificar a existência de anomalias e garantir que tudo exista 
+ * para poder ocorrer essa verificação.
+ * @author Matheus
+ *
+ */
 public class AnomalyAnalysis {
 	KeepTrees keep;
 	
-	AnomalyAnalysis(){}
-	
+	/**
+	 * Construtor da classe AnomalyAnalysis, atribuindo o objeto keep.
+	 * @param keep objeto da classe keep que será utilizado para acessar os dados.
+	 */
 	AnomalyAnalysis(KeepTrees keep){
 		this.keep = keep;
 	}
 	
+	/**
+	 * Método responsável por verficar se o valor de distância do histograma do usuário é recebido é maior
+	 * que a média dos valores de todos os usuário de mesmo pale que o seu.
+	 * @param user usário a ser verificado.
+	 * @return boolean que caso o usuário esteja com um valor de distância maior será verdadeiro, ao contrário
+	 * será falso.
+	 */
 	public boolean analyzeUser(User user) {
 		
 		if(this.searchUser(user) && this.searchAverangeProfile(user)) {	
@@ -37,19 +52,26 @@ public class AnomalyAnalysis {
 				return false;
 			
 		} else {
-			System.out.println("Usu�rio n�o existe ou n�o existe histograma de perfil m�dio do seu"
+			System.out.println("Usário não existe ou não existe histograma de perfil médio do seu"
 					+ "papel definido.");
 		}
 		
 		return true;		
 	}
 	
+	/**
+	 * Método que chama o método para atribuir o valor de distância para todos os usuários.
+	 */
 	public void enterDistanceValue() {
 		for(ProfileTree nodeUser : keep.getUsers()) {
 			createDistanceValue(nodeUser.raiz().getData());
 		}
 	}
 
+	/**
+	 * Método que calcula e atribui o valor de distância Euclidiana para determinado usuário.
+	 * @param user usário ao qual será atrbuido o seu valor de distância Euclidana.
+	 */
 	private void createDistanceValue(User user) {
 		
 		double distanceValue = 0;
@@ -77,11 +99,19 @@ public class AnomalyAnalysis {
 		user.setDistance_value(distanceValue);
 	}
 	
-	public ArrayList<User> createRanking(){
+	/**
+	 * Método responsável por criar ranking com todos os usário de um determinado papel, em relação ao 
+	 * valor de distância dos usuários ao perfil médio do papel.
+	 * @param role papel a qual os uuários serão colocados no ranking.
+	 * @return ArrayList dos usuários já ordenados.
+	 */
+	public ArrayList<User> createRanking(String role){
 		ArrayList<User> ranking = new ArrayList<User>();
 		
 		for(ProfileTree nodeUser : keep.getUsers()) {
-			ranking.add(nodeUser.raiz().getData());
+			if(nodeUser.raiz().getData().getRole().equals(role)) {
+				ranking.add(nodeUser.raiz().getData());
+			}
 		}
 		
 		Collections.sort(ranking);
@@ -89,11 +119,31 @@ public class AnomalyAnalysis {
 		return ranking;
 	}
 	
+	/**
+	 * Método responsável por verfiicar se aquele usuário existe.
+	 * @param user usuário a ser verificado.
+	 * @return boolean seguindo a lógica natural.
+	 */
 	public boolean searchUser(User user) {
+		for(ProfileTree auxUser : keep.getUsers()) {
+			if(auxUser.raiz().getData().getUser_id().equals(user.getUser_id())) {
+				return true;
+			}
+		}
 		return false;	
 	}
 	
+	/**
+	 * Método responsável para verificar se existe o perfil médio do papel do usário.
+	 * @param user usuário a qual o papel será verificado.
+	 * @return boolean seguindo a lógica natural.
+	 */
 	public boolean searchAverangeProfile(User user) {
+		for(NodeUser auxUser : keep.getUsersAverangeProfile()) {
+			if(auxUser.getData().getUser_id().equals(user.getUser_id())) {
+				return true;
+			}
+		}
 		return false;	
 	}
 }

@@ -10,9 +10,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsável em coletar as informações dos arquivos e criar os objetos user, http, logon e devices.
+ * @author Matheus
+ *
+ */
 public class BildPerfil {
 	LogAnalyzer reading = new LogAnalyzer();
 
+	/**
+	 * Método responsável em coletar as informações do arquivo específico e criar os objetos users.
+	 * @param way caminho do arquivo onde será coletados os dados.
+	 * @return ArrayList com todos os objetos users criados.
+	 */
 	public ArrayList<User> buildUser(String way){
 		try {
 			reading.readFile(way, ";");
@@ -42,7 +52,12 @@ public class BildPerfil {
 
 		return users;
 	}
-
+	
+	/**
+	 * Método responsável em coletar as informações do arquivo específico e criar os objetos http.
+	 * @param way caminho do arquivo onde será coletados os dados.
+	 * @return ArrayList com todos os objetos users criados.
+	 */
 	public ArrayList<Http> buildHttp(String way){
 		try {
 			reading.readFile(way, ";");
@@ -72,7 +87,12 @@ public class BildPerfil {
 
 		return http;
 	}
-
+	
+	/**
+	 * Método responsável em coletar as informações do arquivo específico e criar os objetos logon.
+	 * @param way caminho do arquivo onde será coletados os dados.
+	 * @return ArrayList com todos os objetos users criados.
+	 */
 	public ArrayList<Logon> buildLogon(String way){
 		try {
 			reading.readFile(way, ";");
@@ -102,7 +122,12 @@ public class BildPerfil {
 
 		return logon;
 	}
-
+	
+	/**
+	 * Método responsável em coletar as informações do arquivo específico e criar os objetos devices.
+	 * @param way caminho do arquivo onde será coletados os dados.
+	 * @return ArrayList com todos os objetos users criados.
+	 */
 	public ArrayList<Devices> buildDevices(String way){
 		try {
 			reading.readFile(way, ";");
