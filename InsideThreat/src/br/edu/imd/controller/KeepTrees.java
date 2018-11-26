@@ -1,5 +1,6 @@
 package br.edu.imd.controller;
 
+import br.edu.imd.model.Activity;
 import java.util.ArrayList;
 
 import br.edu.imd.model.Devices;
@@ -12,36 +13,82 @@ public class KeepTrees {
 	ArrayList<ProfileTree> users;
 	ArrayList<NodeUser> usersAverangeProfile;
 	
-	// Adiciona cada usuário recebido no arrayList em um objeto ProfileTree, tendo assim sua árvore criada 
+	// Adiciona cada usuï¿½rio recebido no arrayList em um objeto ProfileTree, tendo assim sua ï¿½rvore criada 
 	public void addUser(ArrayList<User> users) {
-		
+            
+            for(User usuario : users){// Percorre a lista recebida como parÃªmtro
+                NodeUser novoUsuario = new NodeUser(usuario);
+                
+                if(this.existe_user(novoUsuario)){ // caso o usuÃ¡rio jÃ¡ exista, pula 
+                    continue;
+                }else{
+                    this.addOneUser(usuario); // caso o usuÃ¡rio nÃ£o exista add novo user
+                }
+            }
+            
 	}
 	
-	// Adiciona a atividade do tipo Http em seu usuário especifico, utilizando o método addActivity() 
+	// Adiciona a atividade do tipo Http em seu usuï¿½rio especifico, utilizando o mï¿½todo addActivity() 
 	// do objeto ProfileTree do user correspondente
 	public void addHttp(ArrayList<Http> buildHttp) {
-	
+           ProfileTree user;
+           for(Http http : buildHttp){
+               user = this.owner_activity(http);
+               user.addActivity(http);
+           }
+            
 	}
-
-	// Adiciona a atividade do tipo Logon em seu usuário especifico, utilizando o método addActivity() 
+	// Adiciona a atividade do tipo Logon em seu usuï¿½rio especifico, utilizando o mï¿½todo addActivity() 
 	// do objeto ProfileTree do user correspondente
 	public void addLogon(ArrayList<Logon> buildLogon) {
+          ProfileTree user;
+           for(Logon logon : buildLogon){
+               user = this.owner_activity(logon);
+               user.addActivity(logon);
+           }
 	
 	}
 
-	// Adiciona a atividade do tipo Devices em seu usuário especifico, utilizando o método addActivity()
+	// Adiciona a atividade do tipo Devices em seu usuï¿½rio especifico, utilizando o mï¿½todo addActivity()
 	// do objeto ProfileTree do user correspondente
 	public void addDevices(ArrayList<Devices> buildDevices) {
+           ProfileTree user;
+           for(Devices dev : buildDevices){
+               user = this.owner_activity(dev);
+               user.addActivity(dev);
+           }
 		
 	}
 	
-	// Retorna o arrayList que armazena as árvores de cada usuário
+	// Retorna o arrayList que armazena as ï¿½rvores de cada usuï¿½rio
 	public ArrayList<ProfileTree> getUsers(){
 		return users;
 	}
 
-	// Retorna o arrayList que armazena os perfis médios de cada papel
+	// Retorna o arrayList que armazena os perfis mï¿½dios de cada papel
 	public ArrayList<NodeUser> getUsersAverangeProfile(){
 		return usersAverangeProfile;
 	}
+        
+        
+        
+        // MÃ¨todo Ã© usando para verificar se um usurÃ¡io jÃ¡ existe 
+        /**
+         * @TODO Lembrar de imprementar o mÃ©todo abaixo
+         * @param newUser
+         * @return 
+         */
+        public boolean existe_user(NodeUser newUser){
+            return false;
+        }
+        
+        // MÃ©todo privado usando no mÃ©todo addUser para add de novos usuÃ¡rio a classe keep tree
+        private void addOneUser(User newUser){
+            this.users.add(new ProfileTree(newUser));
+        }
+        
+        // MÃ©todo recebe uma atividade e identifica qual Ã© o usuÃ¡rio que tem aqule atividade
+        public ProfileTree owner_activity(Activity novaAtividade){
+            return null;
+        }
 }
