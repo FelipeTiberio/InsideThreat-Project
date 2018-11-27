@@ -15,4 +15,11 @@ public class Devices  extends Activity{
 	public void setActivity(String activity) {
 		this.activity = activity;
 	}
+
+    @Override
+    public String toString() {
+        return "Devices [activity=" + activity + "]";
+    }
+        
+        
 }

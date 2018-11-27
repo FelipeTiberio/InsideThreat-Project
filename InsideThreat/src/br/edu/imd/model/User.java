@@ -13,7 +13,7 @@ public class User implements Comparable<User>{
 	public User(String employer_name, String user_id, String email, String domain, String role) {
 		super();
 		this.employer_name = employer_name;
-		this.user_id =  "DTAA/"+ user_id;
+		this.user_id =  "DTAA/".concat(user_id)  ;
 		this.email = email;
 		this.domain = domain;
 		this.role = role;

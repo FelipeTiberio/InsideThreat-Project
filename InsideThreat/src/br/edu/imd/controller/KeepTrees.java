@@ -34,7 +34,7 @@ public class KeepTrees {
            ProfileTree user;
            for(Http http : buildHttp){
                int ArrayIdUser = this.owner_activity(http);
-               if( ArrayIdUser >= 0 || ArrayIdUser <= this.users.size() -1){
+               if( ArrayIdUser >= 0 && ArrayIdUser <= this.users.size() -1){
                 user =  this.users.get( ArrayIdUser);
                 user.addActivity(http);
                }else{
@@ -49,7 +49,8 @@ public class KeepTrees {
           ProfileTree user;
            for(Logon http : buildLogon){
                int ArrayIdUser = this.owner_activity(http);
-               if( ArrayIdUser >= 0 || ArrayIdUser <= this.users.size() -1){
+               //System.out.print(ArrayIdUser + ",");
+               if( ArrayIdUser >= 0 && ArrayIdUser <= this.users.size() -1){
                 user =  this.users.get( ArrayIdUser);
                 user.addActivity(http);
                }else{
@@ -65,7 +66,7 @@ public class KeepTrees {
            ProfileTree user;
            for(Devices http : buildDevices){
                int ArrayIdUser = this.owner_activity(http);
-               if( ArrayIdUser >= 0 || ArrayIdUser <= this.users.size() -1){
+               if( ArrayIdUser >= 0 && ArrayIdUser <= this.users.size() -1){
                 user =  this.users.get( ArrayIdUser);
                 user.addActivity(http);
                }else{
