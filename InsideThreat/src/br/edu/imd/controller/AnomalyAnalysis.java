@@ -84,7 +84,7 @@ public class AnomalyAnalysis {
 			}
 		}
 		
-		for(NodeUser nodeAverangeProfile : keep.getUsersAverangeProfile()) {
+		for(NodeUser nodeAverangeProfile : keep.getUsersAverangeProfile().values()) {
 			if(nodeAverangeProfile.getData().getRole().equals(user.getRole())) {
 				averangeProfileHistogram = nodeAverangeProfile.getHistogram();
 			}

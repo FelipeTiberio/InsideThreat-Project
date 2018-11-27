@@ -26,7 +26,7 @@ public class NodeUser  implements Node<User,Tempo>{
  	}
 
  	/**@return retorna uma lista com todos os filhos de um node*/
- 	public List<NodeTempo>  getChildren() {
+ 	public List<NodeTempo> getChildren() {
  		return children;
  	}
 

@@ -32,7 +32,7 @@ public class Histograma {
 	 * @param id int que representa a hora
 	 */
 	public void add(int valor, int id) {
-		histogram[id]+=valor;
+		histogram[id] += valor;
 	}
 	
 	/**
