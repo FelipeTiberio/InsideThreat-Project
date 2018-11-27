@@ -25,7 +25,7 @@ public class BildPerfil {
 	 */
 	public ArrayList<User> buildUser(String way){
 		try {
-			reading.readFile(way, ";");
+			reading.readFile(way, ",");
 		} catch (IOException e) {
 			System.out.println(e.getLocalizedMessage());
 		}
@@ -49,8 +49,6 @@ public class BildPerfil {
 			User user = new User(employer_name, user_id, email, domain, role);
 			users.add(user);
 		}
-                
-                System.out.println("Tamamanho o array de user retornado po buildprofile: " +users.size());
 		return users;
 	}
 	
@@ -61,7 +59,7 @@ public class BildPerfil {
 	 */
 	public ArrayList<Http> buildHttp(String way){
 		try {
-			reading.readFile(way, ";");
+			reading.readFile(way, ",");
 		} catch (IOException e) {
 			System.out.println(e.getLocalizedMessage());
 		}
@@ -96,7 +94,7 @@ public class BildPerfil {
 	 */
 	public ArrayList<Logon> buildLogon(String way){
 		try {
-			reading.readFile(way, ";");
+			reading.readFile(way, ",");
 		} catch (IOException e) {
 			System.out.println(e.getLocalizedMessage());
 		}
@@ -131,7 +129,7 @@ public class BildPerfil {
 	 */
 	public ArrayList<Devices> buildDevices(String way){
 		try {
-			reading.readFile(way, ";");
+			reading.readFile(way, ",");
 		} catch (IOException e) {
 			System.out.println(e.getLocalizedMessage());
 		}

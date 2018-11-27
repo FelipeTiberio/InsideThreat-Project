@@ -29,7 +29,8 @@ public class Debug {
         
         System.out.println("Teste para a classe Controller");
         Controller controle = new Controller();
-        controle.createUsers("../InsideThreat/Data");;
+        controle.createUsers("../InsideThreat/Data/LDAP.csv"); // Passado o caminho dos arquivos de user 
+        //controle.createUsers("..\InsideThreat\Data" ); //Acho que esse é o semelhante para o windows
         
         
        KeepTrees systema = controle.getKeep();

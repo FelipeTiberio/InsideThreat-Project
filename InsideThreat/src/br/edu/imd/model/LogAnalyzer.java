@@ -15,7 +15,7 @@ public class LogAnalyzer {
 	private BufferedReader filebr = null;
 
 	/**
-	 * O método é usado para ler uma arquivo scv linha por linha, cada linha é um índice do conteiner entries
+	 * O mï¿½todo ï¿½ usado para ler uma arquivo scv linha por linha, cada linha ï¿½ um ï¿½ndice do conteiner entries
 	 * @param filename Nome do arquivo a ser lido
 	 * @param separate caracter usado para separar as colunas do csv
 	 * @throws IOException
@@ -23,11 +23,11 @@ public class LogAnalyzer {
 	public void  readFile(String filename, String separate) throws IOException {
 
 		try {
-
+                        System.out.println("ComeÃ§ando Ã¡ ler o Ã¡rquivo :" + filename);
 			filebr  = new BufferedReader(new FileReader(filename));
 			String line;
-
-			while((line = filebr .readLine()) != null) {
+                        
+			while((line = filebr.readLine()) != null) {
 				String filds[] = line.split(separate);
 				entries.add(filds);
 			}
@@ -52,16 +52,16 @@ public class LogAnalyzer {
 	}
 
 	/**
-	 * @return Retorna uma lista de strings, cada string é uma linha do arquivo de log
+	 * @return Retorna uma lista de strings, cada string ï¿½ uma linha do arquivo de log
 	 */
 	public List<String[]> getEntries() {
 		return entries;
 	}
 
 	/**
-	 * Método usado para debug @
+	 * Mï¿½todo usado para debug @
 	 * @TODO lembrar de removelo depois
-	 * @param n quatidade de índices para de entries para imprime na tela
+	 * @param n quatidade de ï¿½ndices para de entries para imprime na tela
 	 */
 	public void TestLeitura(int n) {
 		int j =0;
