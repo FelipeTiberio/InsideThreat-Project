@@ -33,8 +33,13 @@ public class KeepTrees {
 	public void addHttp(ArrayList<Http> buildHttp) {
            ProfileTree user;
            for(Http http : buildHttp){
-               user =  this.users.get( this.owner_activity(http));
-               user.addActivity(http);
+               int ArrayIdUser = this.owner_activity(http);
+               if( ArrayIdUser >= 0 || ArrayIdUser <= this.users.size() -1){
+                user =  this.users.get( ArrayIdUser);
+                user.addActivity(http);
+               }else{
+                   continue;
+               }
            }
             
 	}
@@ -42,9 +47,14 @@ public class KeepTrees {
 	// do objeto ProfileTree do user correspondente
 	public void addLogon(ArrayList<Logon> buildLogon) {
           ProfileTree user;
-           for(Logon logon : buildLogon){
-               user =  this.users.get( this.owner_activity(logon));
-               user.addActivity(logon);
+           for(Logon http : buildLogon){
+               int ArrayIdUser = this.owner_activity(http);
+               if( ArrayIdUser >= 0 || ArrayIdUser <= this.users.size() -1){
+                user =  this.users.get( ArrayIdUser);
+                user.addActivity(http);
+               }else{
+                   continue;
+               }
            }
 	
 	}
@@ -53,9 +63,14 @@ public class KeepTrees {
 	// do objeto ProfileTree do user correspondente
 	public void addDevices(ArrayList<Devices> buildDevices) {
            ProfileTree user;
-           for(Devices dev : buildDevices){
-               user =  this.users.get( this.owner_activity(dev));
-               user.addActivity(dev);
+           for(Devices http : buildDevices){
+               int ArrayIdUser = this.owner_activity(http);
+               if( ArrayIdUser >= 0 || ArrayIdUser <= this.users.size() -1){
+                user =  this.users.get( ArrayIdUser);
+                user.addActivity(http);
+               }else{
+                   continue;
+               }
            }
 		
 	}
@@ -98,15 +113,14 @@ public class KeepTrees {
         public int owner_activity(Activity novaAtividade){
             int n = 0;
             for(ProfileTree user : users){ // Busca em user quem  é o dono da novaAtividade
-                if(user.existeAtividade(novaAtividade)){
+                if(user.raiz().getData().getUser_id().equals(novaAtividade.getUser())){
                     return n;
                 }else{
                     n++;
                 }
             }
-            // Caso não encontre criar um novo usuário 
-            
-            return n;
+            // Caso não encontre retorna -1
+            return -1;
         }
         
     	
