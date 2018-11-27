@@ -8,6 +8,7 @@ import br.edu.imd.model.User;
  * @author Matheus / Felipe
  */
 public class Controller {
+    
 	BildPerfil bild;
 	KeepTrees keep;
 	AnomalyAnalysis anomaly;
@@ -80,5 +81,13 @@ public class Controller {
 	public ArrayList<User> ShowRanking(String role){
 		return anomaly.createRanking(role);
 	}
+        
+        ////**** Métodos abaixo provavelmente só iram servir como debug
+
+    public KeepTrees getKeep() {
+        return keep;
+    }
+        
+        
 	
 }

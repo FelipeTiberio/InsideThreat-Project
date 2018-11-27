@@ -49,7 +49,8 @@ public class BildPerfil {
 			User user = new User(employer_name, user_id, email, domain, role);
 			users.add(user);
 		}
-
+                
+                System.out.println("Tamamanho o array de user retornado po buildprofile: " +users.size());
 		return users;
 	}
 	
