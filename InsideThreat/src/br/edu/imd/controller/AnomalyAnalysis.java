@@ -33,7 +33,7 @@ public class AnomalyAnalysis {
 	 */
 	public boolean analyzeUser(User user) {
 		
-		if(this.searchUser(user) && this.searchAverangeProfile(user)) {	
+		if(keep.existUser(user) && keep.searchAverangeProfile(user)) {	
 			
 			int contAux = 0;
 			double valueAux = 0;
@@ -119,31 +119,4 @@ public class AnomalyAnalysis {
 		return ranking;
 	}
 	
-	/**
-	 * Método responsável por verfiicar se aquele usuário existe.
-	 * @param user usuário a ser verificado.
-	 * @return boolean seguindo a lógica natural.
-	 */
-	public boolean searchUser(User user) {
-		for(ProfileTree auxUser : keep.getUsers()) {
-			if(auxUser.raiz().getData().getUser_id().equals(user.getUser_id())) {
-				return true;
-			}
-		}
-		return false;	
-	}
-	
-	/**
-	 * Método responsável para verificar se existe o perfil médio do papel do usário.
-	 * @param user usuário a qual o papel será verificado.
-	 * @return boolean seguindo a lógica natural.
-	 */
-	public boolean searchAverangeProfile(User user) {
-		for(NodeUser auxUser : keep.getUsersAverangeProfile()) {
-			if(auxUser.getData().getUser_id().equals(user.getUser_id())) {
-				return true;
-			}
-		}
-		return false;	
-	}
 }

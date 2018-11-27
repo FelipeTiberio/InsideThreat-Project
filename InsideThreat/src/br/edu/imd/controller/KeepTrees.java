@@ -10,26 +10,26 @@ import br.edu.imd.model.NodeUser;
 import br.edu.imd.model.User;
 
 public class KeepTrees {
-	ArrayList<ProfileTree> users;
-	ArrayList<NodeUser> usersAverangeProfile;
+	private ArrayList<ProfileTree> users = new ArrayList<ProfileTree>();
+	private ArrayList<NodeUser> usersAverangeProfile = new ArrayList<NodeUser>();
 	
 	// Adiciona cada usu�rio recebido no arrayList em um objeto ProfileTree, tendo assim sua �rvore criada 
-	public void addUser(ArrayList<User> users) {
-            
-            for(User usuario : users){// Percorre a lista recebida como parêmtro
-                NodeUser novoUsuario = new NodeUser(usuario);
-                
-                if(this.existe_user(novoUsuario)){ // caso o usuário já exista, pula 
+	
+	public void addUser(ArrayList<User> newUsers) {
+            for(User usuario : newUsers){// Percorre a lista recebida como parêmtro    
+                if(this.existUser(usuario)){ // caso o usuário já exista, pula 
                     continue;
                 }else{
                     this.addOneUser(usuario); // caso o usuário não exista add novo user
                 }
             }
+    	}
             
-	}
+	
 	
 	// Adiciona a atividade do tipo Http em seu usu�rio especifico, utilizando o m�todo addActivity() 
 	// do objeto ProfileTree do user correspondente
+	
 	public void addHttp(ArrayList<Http> buildHttp) {
            ProfileTree user;
            for(Http http : buildHttp){
@@ -73,13 +73,18 @@ public class KeepTrees {
         
         
         // Mètodo é usando para verificar se um usuráio já existe 
-        /**
-         * @TODO Lembrar de imprementar o método abaixo
-         * @param newUser
-         * @return 
-         */
-        public boolean existe_user(NodeUser newUser){
-            return false;
+      
+        public boolean existUser(User newUser){
+        	if(users.isEmpty()) {
+        		return false;
+        	}
+        	
+        	for(ProfileTree auxUser : users) {
+    			if(auxUser.raiz().getData().getUser_id().equals(newUser.getUser_id())) {
+    				return true;
+    			}
+    		}
+    		return false;	
         }
         
         // Método privado usando no método addUser para add de novos usuário a classe keep tree
@@ -99,6 +104,30 @@ public class KeepTrees {
                     n++;
                 }
             }
+            // Caso não encontre criar um novo usuário 
+            
             return n;
         }
+        
+    	
+    	/**
+    	 * Método responsável para verificar se existe o perfil médio do papel do usário.
+    	 * @param user usuário a qual o papel será verificado.
+    	 * @return boolean seguindo a lógica natural.
+    	 */
+    	public boolean searchAverangeProfile(User user) {
+    		for(NodeUser auxUser : usersAverangeProfile) {
+    			if(auxUser.getData().getUser_id().equals(user.getUser_id())) {
+    				return true;
+    			}
+    		}
+    		return false;	
+    	}
+    	
+    	
+    	public void nome() {
+    		for(ProfileTree user : users) {
+    			System.out.println(user.raiz().getData().getEmployer_name());
+    		}
+    	}
 }
