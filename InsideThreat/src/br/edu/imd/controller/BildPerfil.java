@@ -4,6 +4,7 @@ import br.edu.imd.model.LogAnalyzer;
 import br.edu.imd.model.User;
 import br.edu.imd.model.Http;
 import br.edu.imd.model.Logon;
+import br.edu.imd.model.Activity;
 import br.edu.imd.model.Devices;
 
 import java.io.IOException;
@@ -57,7 +58,7 @@ public class BildPerfil {
 	 * @param way caminho do arquivo onde será coletados os dados.
 	 * @return ArrayList com todos os objetos users criados.
 	 */
-	public ArrayList<Http> buildHttp(String way){
+	public ArrayList<Activity> buildHttp(String way){
 		try {
 			reading.readFile(way, ",");
 		} catch (IOException e) {
@@ -65,7 +66,7 @@ public class BildPerfil {
 		}
 		List<String[]> data = reading.getEntries();
 
-		ArrayList<Http> http = new ArrayList<Http>();
+		ArrayList<Activity> http = new ArrayList<Activity>();
 
 		String id;
 		String date;
@@ -92,7 +93,7 @@ public class BildPerfil {
 	 * @param way caminho do arquivo onde será coletados os dados.
 	 * @return ArrayList com todos os objetos users criados.
 	 */
-	public ArrayList<Logon> buildLogon(String way){
+	public ArrayList<Activity> buildLogon(String way){
 		try {
 			reading.readFile(way, ",");
 		} catch (IOException e) {
@@ -100,7 +101,7 @@ public class BildPerfil {
 		}
 		List<String[]> data = reading.getEntries();
 
-		ArrayList<Logon> logon = new ArrayList<Logon>();
+		ArrayList<Activity> logon = new ArrayList<Activity>();
 
 		String id;
 		String date;
@@ -127,7 +128,7 @@ public class BildPerfil {
 	 * @param way caminho do arquivo onde será coletados os dados.
 	 * @return ArrayList com todos os objetos users criados.
 	 */
-	public ArrayList<Devices> buildDevices(String way){
+	public ArrayList<Activity> buildDevices(String way){
 		try {
 			reading.readFile(way, ",");
 		} catch (IOException e) {
@@ -135,7 +136,7 @@ public class BildPerfil {
 		}
 		List<String[]> data = reading.getEntries();
 
-		ArrayList<Devices> device = new ArrayList<Devices>();
+		ArrayList<Activity> device = new ArrayList<Activity>();
 
 		String id;
 		String date;

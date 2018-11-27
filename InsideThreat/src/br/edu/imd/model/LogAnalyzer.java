@@ -9,13 +9,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsável em fazer leitura de arquivos com uma formatação
+ * @author Felipe / Matheus
+ */
 public class LogAnalyzer {
 	// Usado para armazenar as linhas dos arquivos
 	private List<String[]> entries = new ArrayList<>();
 	private BufferedReader filebr = null;
 
 	/**
-	 * O m�todo � usado para ler uma arquivo scv linha por linha, cada linha � um �ndice do conteiner entries
+	 * O método usado para ler uma arquivo scv linha por linha, cada linha é um índice do conteiner entries
 	 * @param filename Nome do arquivo a ser lido
 	 * @param separate caracter usado para separar as colunas do csv
 	 * @throws IOException
@@ -23,7 +27,7 @@ public class LogAnalyzer {
 	public void  readFile(String filename, String separate) throws IOException {
 
 		try {
-                        System.out.println("Começando á ler o árquivo :" + filename);
+            System.out.println("Lendo o arquivo:" + filename);
 			filebr  = new BufferedReader(new FileReader(filename));
 			String line;
                         
@@ -45,23 +49,21 @@ public class LogAnalyzer {
 				} catch (IOException e) {
 					System.out.println(e.getMessage());
 				}
-
 			}
 		}
-
 	}
 
 	/**
-	 * @return Retorna uma lista de strings, cada string � uma linha do arquivo de log
+	 * @return Retorna uma lista de strings, cada string é uma linha do arquivo de log
 	 */
 	public List<String[]> getEntries() {
 		return entries;
 	}
 
 	/**
-	 * M�todo usado para debug @
+	 * Método usado para debug @
 	 * @TODO lembrar de removelo depois
-	 * @param n quatidade de �ndices para de entries para imprime na tela
+	 * @param n quatidade de índices para de entries para imprime na tela
 	 */
 	public void TestLeitura(int n) {
 		int j =0;

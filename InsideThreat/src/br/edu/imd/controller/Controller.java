@@ -35,7 +35,7 @@ public class Controller {
 	 * @param wayFile caminho do arquivo com os dados dos usuários
 	 */
 	public void createHttp(String wayFile) {
-		keep.addHttp(bild.buildHttp(wayFile));
+		keep.addActivity(bild.buildHttp(wayFile));
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class Controller {
 	 * @param wayFile caminho do arquivo com os dados dos usuários
 	 */
 	public void createLogon(String wayFile) {
-		keep.addLogon(bild.buildLogon(wayFile));
+		keep.addActivity(bild.buildLogon(wayFile));
 	}
 	
 	/**
@@ -51,7 +51,7 @@ public class Controller {
 	 * @param wayFile caminho do arquivo com os dados dos usuários
 	 */
 	public void createDevices(String wayFile) {
-		keep.addDevices(bild.buildDevices(wayFile));
+		keep.addActivity(bild.buildDevices(wayFile));
 	}
 	
 	/**
@@ -81,13 +81,25 @@ public class Controller {
 	public ArrayList<User> ShowRanking(String role){
 		return anomaly.createRanking(role);
 	}
-        
-        ////**** Métodos abaixo provavelmente só iram servir como debug
-
-    public KeepTrees getKeep() {
-        return keep;
-    }
-        
-        
 	
+	/**
+	 * Método que mostra a quantidade de usuários cadastrados
+	 * @return int com a quantidade de usuários
+	 */
+	public int qtdUsers() {
+		return keep.getUsers().size();
+	}
+	
+	/**
+	 * Método que imprime árvore de um usáriuo específico
+	 * @param name nome do user a qual será impresso a árvore
+	 */
+	public void viewUser(String name) {
+		for(ProfileTree users : keep.getUsers()) {
+			if(users.raiz().getData().getEmployerName().equals(name)) {
+				users.preintTree(users.raiz(), " ");
+			}
+		}
+	}
+        	
 }

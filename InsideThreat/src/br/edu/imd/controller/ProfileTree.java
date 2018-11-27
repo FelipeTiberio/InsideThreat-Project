@@ -1,9 +1,12 @@
 package br.edu.imd.controller;
-import java.util.ArrayList;
-import java.util.Date;
 
+import java.util.Date;
 import br.edu.imd.model.*;
 
+/**
+ * Classe responsável por manter a estrutura de uma árvore
+ * @author Felipe 
+ */
 public class ProfileTree {
 	private NodeUser raiz = null;
 	
@@ -21,16 +24,16 @@ public class ProfileTree {
 	}
 	
 	/**
-	 * O método add mais um NodePc como filho de Tempo
-	 * @param new_pc  Argumento será usando como parametro para um novo Nó do tipo pc
+	 * O método adiciona mais um NodePc como filho de Tempo
+	 * @param newPc Argumento será usadocomo parametro para um novo Nó do tipo pc
 	 */
-	private void addPc(Pc new_pc) {
-		raiz.getChildren().get(0).addChild(new NodePc( new_pc));;
+	private void addPc(Pc newPc) {
+		raiz.getChildren().get(0).addChild(new NodePc(newPc));;
 	}
 	
 	/**
 	 * O Método recebe o nome de um pc, e verifica se esse Pc já existe na árvore
-	 * @param nomePc String correspondente a o nume de um ṕc
+	 * @param nomePc String correspondente ao nome de um pc
 	 * @return retorna true se o pc já estiver na árvore, false caso contrário 
 	 */
 	public NodePc buscaPc(String nomePc) {
@@ -53,13 +56,15 @@ public class ProfileTree {
 	 * @return
 	 */
 	public boolean addActivity(Activity activity) {
-		NodePc pc = buscaPc(activity.getPc()); // Buscas se o pc correspondente a atividade já existe na árvore 
+		// Buscas se o pc correspondente a atividade já existe na árvore 
+		NodePc pc = buscaPc(activity.getPc()); 
 		String data[] = new String[2];
 		String hora[] = new String[3];
 		data = activity.getDate().split(" ");
 		int horaInt;
 		
-		if(pc != null) { // Caso o pc já exista, busca se atividade já exista, caso não exista então, então add nova atividade
+		// Caso o pc já exista, busca se atividade já exista, caso não exista então, então add nova atividade
+		if(pc != null) { 
 			for(NodeActivity act : pc.getChildren()) {
 				if(act.getData() == activity) {
 					return false;
@@ -74,7 +79,7 @@ public class ProfileTree {
 			
 			return true;
 			
-		} // caso o pc não exista então primeiro irá criar um no para o pc, só depois add nova atividade
+		} 	// caso o pc não exista então primeiro irá criar um no para o pc, só depois add nova atividade
 			NodePc newPc = new NodePc(new Pc(activity.getPc()));
 			raiz.getChildren().get(0).addChild(newPc);
 			newPc.addChild(new NodeActivity(activity));
@@ -87,6 +92,10 @@ public class ProfileTree {
 		return true;
 	}
 	
+	/**
+	 * Método retorna o Nodeuser 
+	 * @return o objeto Nodeuser que a ProfileTree é correspondente
+	 */
 	public NodeUser raiz() {
 		return raiz;
 	}
@@ -99,6 +108,4 @@ public class ProfileTree {
 		}
 	}
         
-      
-
 }

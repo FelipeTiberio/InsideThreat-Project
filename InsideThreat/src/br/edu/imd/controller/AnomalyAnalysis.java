@@ -42,17 +42,17 @@ public class AnomalyAnalysis {
 			for(ProfileTree nodeUser : keep.getUsers()) {
 				if(nodeUser.raiz().getData().getRole().equals(roleAux)) {
 					contAux++;
-					valueAux += nodeUser.raiz().getData().getDistance_value();
+					valueAux += nodeUser.raiz().getData().getDistanceValue();
 				}
 			}
 			
 			valueAux = valueAux/contAux;
 			
-			if(user.getDistance_value() <= valueAux && user.getDistance_value() > 0) 
+			if(user.getDistanceValue() <= valueAux && user.getDistanceValue() > 0) 
 				return false;
 			
-		} else {
-			System.out.println("Usário não existe ou não existe histograma de perfil médio do seu"
+		} 	else {
+				System.out.println("Usário não existe ou não existe histograma de perfil médio do seu"
 					+ "papel definido.");
 		}
 		
@@ -79,7 +79,7 @@ public class AnomalyAnalysis {
 		Histograma averangeProfileHistogram = new Histograma();
 		
 		for(ProfileTree nodeUser : keep.getUsers()) {
-			if(nodeUser.raiz().getData().getUser_id().equals(user.getUser_id())) {
+			if(nodeUser.raiz().getData().getUserId().equals(user.getUserId())) {
 				userHistogram = nodeUser.raiz().getHistogram();
 			}
 		}
@@ -96,7 +96,7 @@ public class AnomalyAnalysis {
 		}	
 		
 		distanceValue = Math.sqrt(aux);	
-		user.setDistance_value(distanceValue);
+		user.setDistanceValue(distanceValue);
 	}
 	
 	/**
