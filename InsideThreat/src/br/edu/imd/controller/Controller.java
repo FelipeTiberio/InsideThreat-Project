@@ -84,7 +84,6 @@ public class Controller {
 	 */
 	public void ShowRanking(String role){
 		ArrayList<User> ranking = anomaly.createRanking(role);
-		
 		for(int i = 0; i < ranking.size(); i++) {
 			System.out.println(i+1 + " - " + ranking.get(i).getEmployerName() + " - Value: " + 
 			ranking.get(i).getDistanceValue());

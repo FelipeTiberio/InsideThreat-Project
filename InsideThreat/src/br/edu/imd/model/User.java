@@ -105,7 +105,7 @@ public class User implements Comparable<User>{
 	 * @return Sring com o papel do usuário
 	 */
 	public String getRole() {
-		return role;
+		return this.role.replace("\\n", "").replace("\\0", "");
 	}
 
 	/**

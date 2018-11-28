@@ -108,9 +108,9 @@ public class AnomalyAnalysis {
 	 */
 	public ArrayList<User> createRanking(String role){
 		ArrayList<User> ranking = new ArrayList<User>();
-		
-		for(ProfileTree nodeUser : keep.getUsers()) {
-			if(nodeUser.raiz().getData().getRole().equals(role)) {
+		//String aux;
+		for(ProfileTree nodeUser : keep.getUsers()) {   
+			if(nodeUser.raiz().getData().getRole().equalsIgnoreCase(role)) {
 				ranking.add(nodeUser.raiz().getData());
 			}
 		}
