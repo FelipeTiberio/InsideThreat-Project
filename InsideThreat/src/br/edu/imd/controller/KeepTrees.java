@@ -7,13 +7,15 @@ import java.util.Map;
 import br.edu.imd.model.Activity;
 import br.edu.imd.model.NodeUser;
 import br.edu.imd.model.User;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Classe responsável por manter e construir a organização das árvores
  * @author Felipe / Matheus
  */
 public class KeepTrees {
-	private ArrayList<ProfileTree> users = new ArrayList<ProfileTree>();
+	private List<ProfileTree> users = new LinkedList<ProfileTree>();
 	private Map<String, NodeUser> usersAverangeProfile = new HashMap<String, NodeUser>();
 	
 	/**
@@ -43,7 +45,7 @@ public class KeepTrees {
 	 * do objeto ProfileTree do user correspondente
 	 * @param buildActivity ArrayList cotendo objetos do tipo activity que serão adicionados no user correspondente
 	 */
-	public void addActivity(ArrayList<Activity> buildActivity) {
+	public void addActivity(LinkedList<Activity> buildActivity) {
         ProfileTree user;
         for(Activity activity : buildActivity){
             int ArrayIdUser = this.ownerActivity(activity);
@@ -146,7 +148,7 @@ public class KeepTrees {
 	 *  Retorna o arrayList que armazena as árvores de cada usuário
 	 * @return ArrayList com todas as árvores
 	 */
-	public ArrayList<ProfileTree> getUsers(){
+	public List<ProfileTree> getUsers(){
 		return users;
 	}
 

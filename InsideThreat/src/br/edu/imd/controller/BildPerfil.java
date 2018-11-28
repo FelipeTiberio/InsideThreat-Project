@@ -9,6 +9,7 @@ import br.edu.imd.model.Devices;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -58,7 +59,7 @@ public class BildPerfil {
 	 * @param way caminho do arquivo onde será coletados os dados.
 	 * @return ArrayList com todos os objetos users criados.
 	 */
-	public ArrayList<Activity> buildHttp(String way){
+	public LinkedList<Activity> buildHttp(String way){
 		try {
 			reading.readFile(way, ",");
 		} catch (IOException e) {
@@ -66,14 +67,15 @@ public class BildPerfil {
 		}
 		List<String[]> data = reading.getEntries();
 
-		ArrayList<Activity> http = new ArrayList<Activity>();
+		LinkedList<Activity> http = new LinkedList<Activity>();
 
 		String id;
 		String date;
 		String user;
 		String pc;
 		String url;
-
+                Http auxHttp;
+                
 		for(String[] line : data) {
 			id 	 = line[0];
 			date = line[1];
@@ -81,10 +83,10 @@ public class BildPerfil {
 			pc   = line[3];
 			url  = line[4];
 
-			Http auxHttp= new Http(id, date, user, pc, url);
+			auxHttp= new Http(id, date, user, pc, url);
 			http.add(auxHttp);
 		}
-
+                System.out.println("Terminei a leitura do arquivo");
 		return http;
 	}
 	
@@ -93,7 +95,7 @@ public class BildPerfil {
 	 * @param way caminho do arquivo onde será coletados os dados.
 	 * @return ArrayList com todos os objetos users criados.
 	 */
-	public ArrayList<Activity> buildLogon(String way){
+	public  LinkedList<Activity> buildLogon(String way){
 		try {
 			reading.readFile(way, ",");
 		} catch (IOException e) {
@@ -101,7 +103,7 @@ public class BildPerfil {
 		}
 		List<String[]> data = reading.getEntries();
 
-		ArrayList<Activity> logon = new ArrayList<Activity>();
+		 LinkedList<Activity> logon = new  LinkedList<Activity>();
 
 		String id;
 		String date;
@@ -128,7 +130,7 @@ public class BildPerfil {
 	 * @param way caminho do arquivo onde será coletados os dados.
 	 * @return ArrayList com todos os objetos users criados.
 	 */
-	public ArrayList<Activity> buildDevices(String way){
+	public  LinkedList<Activity> buildDevices(String way){
 		try {
 			reading.readFile(way, ",");
 		} catch (IOException e) {
@@ -136,7 +138,7 @@ public class BildPerfil {
 		}
 		List<String[]> data = reading.getEntries();
 
-		ArrayList<Activity> device = new ArrayList<Activity>();
+		 LinkedList<Activity> device = new  LinkedList<Activity>();
 
 		String id;
 		String date;

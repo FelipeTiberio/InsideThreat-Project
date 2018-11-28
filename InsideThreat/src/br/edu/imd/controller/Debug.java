@@ -27,10 +27,10 @@ public class Debug {
 		
         System.out.println("Teste para a classe Controller");
         Controller controle = new Controller();
-        controle.createUsers("../InsideThreat/Data/LDAP.csv"); // Passado o caminho dos arquivos de user 
-        controle.createLogon("../InsideThreat/Data/logon.csv");
+       // controle.createUsers("../InsideThreat/Data/LDAP.csv"); // Passado o caminho dos arquivos de user 
+        //controle.createLogon("../InsideThreat/Data/logon.csv");
         //controle.createDevices("../InsideThreat/Data/device.csv");
-       // controle.createHttp("../InsideThreat/Data/http.csv");
+       controle.createHttp("../InsideThreat/Data/http.csv");
          
       // 	System.out.println("Quantidade de árvore de usuários cadastrados: " + controle.qtdUsers());
        	System.out.println("**** Imprimindo a árvore de um user cadastrado ***");
