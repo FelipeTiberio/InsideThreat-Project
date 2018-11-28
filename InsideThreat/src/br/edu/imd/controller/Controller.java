@@ -3,7 +3,9 @@ package br.edu.imd.controller;
 import java.util.ArrayList;
 
 import br.edu.imd.model.Histograma;
+import br.edu.imd.model.NodeUser;
 import br.edu.imd.model.User;
+import java.util.Map;
 
 /**
  * Classe controller será responsável por manter toda a organização e divisão de tarefas do sistema.
@@ -110,16 +112,21 @@ public class Controller {
 	}
 	
 	public void viewAverangeProfile(String role) {
+                String k ;
+                NodeUser v;
 
 		// NÃO ESTÁ ENTRANDO NO LAÇO
-		keep.getUsersAverangeProfile().forEach((k,v) -> {
-			if(k.equals(role)) {
+		//keep.getUsersAverangeProfile().forEach((k,v) -> {
+                 for(Map.Entry<String,NodeUser> entry : keep.getUsersAverangeProfile().entrySet() ){
+                      k = entry.getKey();
+                      v = entry.getValue();
+                     if(k.equals(role)) {
 				Histograma histogram = v.getHistogram();
 				for(int i = 0; i < 24; i++) {
 					System.out.println(histogram.getValue(i) + " | ");
 				}
 			}
-		});
+		};
 		
 		/**
 		for(Map.Entry<String,NodeUser> user : keep.getUsersAverangeProfile().entrySet()) {

@@ -103,9 +103,14 @@ public class KeepTrees {
      * @param activity atividade que foi realizada, importante para obter o horário
      */
     public void addActivityAverangeProfile(User user, Activity activity) {
+        String k ;
+        NodeUser v;
     	
     	// NÃO ESTÁ ENTRANDO NO LAÇO
-    	this.usersAverangeProfile.forEach((k,v) -> {
+    	//this.usersAverangeProfile.forEach((k,v) -> {
+        for(Map.Entry<String,NodeUser> entry : this.usersAverangeProfile.entrySet() ){
+                k = entry.getKey();
+                v = entry.getValue();
     		System.out.println("Entrou no laço de adicionar histograma do perfil médio");
     		if(k.equals(user.getRole())) {
     			String[] data = new String[2];
@@ -121,7 +126,7 @@ public class KeepTrees {
     			createAverangeProfile(user.getRole());
     			this.addActivityAverangeProfile(user, activity);
     		}
-    	});
+    	};
     	
     	/**
     	for(Map.Entry<String,NodeUser> users : usersAverangeProfile.entrySet()) {
