@@ -1,12 +1,13 @@
 package br.edu.imd.model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class NodeTempo implements Node<Tempo,Devices> {
 	private  Tempo data = null;
 	private  Node<User,Tempo> parent  = null;
-	private  List<NodePc> children = new ArrayList<NodePc>();
+	private  List<NodePc> children = new LinkedList<NodePc>();
 
 	public NodeTempo(Tempo data) {
 		 this.data = data;

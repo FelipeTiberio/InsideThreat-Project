@@ -1,12 +1,13 @@
 package br.edu.imd.model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class NodeUser  implements Node<User,Tempo>{
 	private User data = null;
 	private Histograma histogram = new Histograma();
-	private List<NodeTempo> children = new ArrayList<NodeTempo>();
+	private List<NodeTempo> children = new LinkedList<NodeTempo>();
 	//private Node<T> parent = null;
 
 	public NodeUser(User data) {

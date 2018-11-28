@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 //import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class LogAnalyzer {
 	// Usado para armazenar as linhas dos arquivos
-	private List<String[]> entries = new ArrayList<>();
+	private List<String[]> entries = new LinkedList<String[]>();
 	private BufferedReader filebr = null;
 
 	/**

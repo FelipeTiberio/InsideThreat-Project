@@ -1,12 +1,13 @@
 package br.edu.imd.model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class NodePc implements Node<Pc,Activity>{
 	private  Pc data = null;
 	private  NodeTempo parent  = null;
-	private  List<NodeActivity> children = new ArrayList<NodeActivity>();
+	private  List<NodeActivity> children = new LinkedList<NodeActivity>();
 
 	public NodePc(Pc data) {
 		this.data = data;
