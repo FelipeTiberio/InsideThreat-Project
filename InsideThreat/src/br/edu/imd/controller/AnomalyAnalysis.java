@@ -83,7 +83,8 @@ public class AnomalyAnalysis {
 				userHistogram = nodeUser.raiz().getHistogram();
 			}
 		}
-		
+	
+		// 	NÃO ESTÁ ENTRANDO NO LAÇO
 		for(NodeUser nodeAverangeProfile : keep.getUsersAverangeProfile().values()) {
 			if(nodeAverangeProfile.getData().getRole().equals(user.getRole())) {
 				averangeProfileHistogram = nodeAverangeProfile.getHistogram();

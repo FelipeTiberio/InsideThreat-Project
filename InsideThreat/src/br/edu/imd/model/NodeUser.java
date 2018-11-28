@@ -54,7 +54,6 @@ public class NodeUser  implements Node<User,Tempo>{
 	 * @param valor
 	 * @param id
 	 */
-
 	public void addToHistogra(int valor, int id) {
 		this.histogram.add(valor, id);
 	}

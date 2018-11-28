@@ -49,10 +49,10 @@ public class KeepTrees {
         ProfileTree user;
         for(Activity activity : buildActivity){
             int ArrayIdUser = this.ownerActivity(activity);
-            if(ArrayIdUser >= 0 && ArrayIdUser <= this.users.size() -1){
+            if(ArrayIdUser >= 0 && ArrayIdUser <= this.users.size()-1){
             	user = this.users.get(ArrayIdUser);
             	user.addActivity(activity);
-            	addActivityAverangeProfile(user.raiz().getData(), activity);
+            	this.addActivityAverangeProfile(user.raiz().getData(), activity);
             } else {
                 continue;
             }
@@ -87,7 +87,6 @@ public class KeepTrees {
     	if(users.isEmpty()) {
     		return false;
         }
-  
         for(ProfileTree auxUser : users) {
         	if(auxUser.raiz().getData().getUserId().equals(newUser.getUserId())) {
         		return true;
@@ -98,27 +97,35 @@ public class KeepTrees {
     }
     
     /**
-    * Método responsável para verificar se existe o perfil médio do papel do usário.
-    * @param user usuário a qual o papel será verificado.
-    * @return boolean que caso o perfil médio exista é verdadeiro, caso contrário, falso
-    */
-    public boolean searchAverangeProfile(User user) {
-    	for(NodeUser auxUser : usersAverangeProfile.values()) {
-    		if(auxUser.getData().getUserId().equals(user.getUserId())) {
-    			return true;
-    		}
-    	}
-    	return false;	
-    }
-    
-    /**
      * Método que adiciona uma atividade a mais no histograma do perfil médio do papel
      * do suário que realizou a atividade
      * @param user usuário a qual o perfil médio do seu papel será adicionado
      * @param activity atividade que foi realizada, importante para obter o horário
      */
     public void addActivityAverangeProfile(User user, Activity activity) {
+    	
+    	// NÃO ESTÁ ENTRANDO NO LAÇO
+    	this.usersAverangeProfile.forEach((k,v) -> {
+    		System.out.println("Entrou no laço de adicionar histograma do perfil médio");
+    		if(k.equals(user.getRole())) {
+    			String[] data = new String[2];
+    			String aux;
+    			int hora;
+    			
+    			data = activity.getDate().split(" ");
+    			aux = data[1].substring(0, 1);
+    			hora = Integer.parseInt(aux);
+   
+    			v.addToHistogra(1, hora);
+    		} else {
+    			createAverangeProfile(user.getRole());
+    			this.addActivityAverangeProfile(user, activity);
+    		}
+    	});
+    	
+    	/**
     	for(Map.Entry<String,NodeUser> users : usersAverangeProfile.entrySet()) {
+    		System.out.println("Entrou no laço de adicionar histograma do perfil médio");
     		if(users.getKey().equals(user.getRole())) {
     			String[] data = new String[2];
     			String aux;
@@ -133,6 +140,7 @@ public class KeepTrees {
     			createAverangeProfile(user.getRole());
     		}
     	}
+    	*/
     }
     
     /**
@@ -142,6 +150,20 @@ public class KeepTrees {
     private void createAverangeProfile(String role) {
     	NodeUser nodeUser = new NodeUser(new User("","","","",""));
     	usersAverangeProfile.put(role, nodeUser);
+    }
+    
+    /**
+    * Método responsável para verificar se existe o perfil médio do papel do usário.
+    * @param user usuário a qual o papel será verificado.
+    * @return boolean que caso o perfil médio exista é verdadeiro, caso contrário, falso
+    */
+    public boolean searchAverangeProfile(User user) {
+    	for(String userKey : usersAverangeProfile.keySet()) {
+    		if(userKey.equals(user.getRole())) {
+    			return true;
+    		}
+    	}
+    	return false;	
     }
 	
 	/**

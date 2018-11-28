@@ -1,6 +1,8 @@
 package br.edu.imd.controller;
 
 import java.util.ArrayList;
+
+import br.edu.imd.model.Histograma;
 import br.edu.imd.model.User;
 
 /**
@@ -78,8 +80,13 @@ public class Controller {
 	 * @return ArrayList de usuário em ordem crescente, ou seja, os primeiros com
 	 * os valores mais próximo de zero.
 	 */
-	public ArrayList<User> ShowRanking(String role){
-		return anomaly.createRanking(role);
+	public void ShowRanking(String role){
+		ArrayList<User> ranking = anomaly.createRanking(role);
+		
+		for(int i = 0; i < ranking.size(); i++) {
+			System.out.println(i+1 + " - " + ranking.get(i).getEmployerName() + " - Value: " + 
+			ranking.get(i).getDistanceValue());
+		}
 	}
 	
 	/**
@@ -100,6 +107,33 @@ public class Controller {
 				users.preintTree(users.raiz(), " ");
 			}
 		}
+	}
+	
+	public void viewAverangeProfile(String role) {
+
+		// NÃO ESTÁ ENTRANDO NO LAÇO
+		keep.getUsersAverangeProfile().forEach((k,v) -> {
+			if(k.equals(role)) {
+				Histograma histogram = v.getHistogram();
+				for(int i = 0; i < 24; i++) {
+					System.out.println(histogram.getValue(i) + " | ");
+				}
+			}
+		});
+		
+		/**
+		for(Map.Entry<String,NodeUser> user : keep.getUsersAverangeProfile().entrySet()) {
+			System.out.println("Entrou no primeiro laço");
+			if(user.getKey().equals(role)) {
+				System.out.println("Entrou no if");
+				Histograma histogram = user.getValue().getHistogram();
+				for(int i = 0; i < 24; i++) {
+					System.out.println("Entrou no segundo laço");
+					System.out.println(histogram.getValue(i) + " | ");
+				}
+			}
+		}
+		*/
 	}
         	
 }

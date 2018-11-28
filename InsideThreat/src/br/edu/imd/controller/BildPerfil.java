@@ -14,8 +14,7 @@ import java.util.List;
 
 /**
  * Classe responsável em coletar as informações dos arquivos e criar os objetos user, http, logon e devices.
- * @author Matheus
- *
+ * @author Matheus / Felipe
  */
 public class BildPerfil {
 	LogAnalyzer reading = new LogAnalyzer();
@@ -40,6 +39,7 @@ public class BildPerfil {
 		String email;
 		String domain;
 		String role;
+		User user;
 
 		for(String[] line : data) {
 			employer_name = line[0];
@@ -48,7 +48,7 @@ public class BildPerfil {
 			domain 		  = line[3];
 			role 		  = line[4];
 
-			User user = new User(employer_name, user_id, email, domain, role);
+			user = new User(employer_name, user_id, email, domain, role);
 			users.add(user);
 		}
 		return users;
@@ -57,7 +57,7 @@ public class BildPerfil {
 	/**
 	 * Método responsável em coletar as informações do arquivo específico e criar os objetos http.
 	 * @param way caminho do arquivo onde será coletados os dados.
-	 * @return ArrayList com todos os objetos users criados.
+	 * @return LinkedList com todos os objetos users criados.
 	 */
 	public LinkedList<Activity> buildHttp(String way){
 		try {
@@ -74,7 +74,7 @@ public class BildPerfil {
 		String user;
 		String pc;
 		String url;
-                Http auxHttp;
+        Http auxHttp;
                 
 		for(String[] line : data) {
 			id 	 = line[0];
@@ -83,17 +83,17 @@ public class BildPerfil {
 			pc   = line[3];
 			url  = line[4];
 
-			auxHttp= new Http(id, date, user, pc, url);
+			auxHttp = new Http(id, date, user, pc, url);
 			http.add(auxHttp);
 		}
-                System.out.println("Terminei a leitura do arquivo");
+        System.out.println("Terminei a leitura do arquivo");
 		return http;
 	}
 	
 	/**
 	 * Método responsável em coletar as informações do arquivo específico e criar os objetos logon.
 	 * @param way caminho do arquivo onde será coletados os dados.
-	 * @return ArrayList com todos os objetos users criados.
+	 * @return LinkedList com todos os objetos users criados.
 	 */
 	public  LinkedList<Activity> buildLogon(String way){
 		try {
@@ -110,7 +110,8 @@ public class BildPerfil {
 		String user;
 		String pc;
 		String activity;
-
+		Logon auxLogon;
+		
 		for(String[] line : data) {
 			id   	 = line[0];
 			date 	 = line[1];
@@ -118,7 +119,7 @@ public class BildPerfil {
 			pc       = line[3];
 			activity = line[4];
 
-			Logon auxLogon= new Logon(id, date, user, pc, activity);
+			auxLogon = new Logon(id, date, user, pc, activity);
 			logon.add(auxLogon);
 		}
 
@@ -128,7 +129,7 @@ public class BildPerfil {
 	/**
 	 * Método responsável em coletar as informações do arquivo específico e criar os objetos devices.
 	 * @param way caminho do arquivo onde será coletados os dados.
-	 * @return ArrayList com todos os objetos users criados.
+	 * @return LinkedList com todos os objetos users criados.
 	 */
 	public  LinkedList<Activity> buildDevices(String way){
 		try {
@@ -145,6 +146,7 @@ public class BildPerfil {
 		String user;
 		String pc;
 		String activity;
+		Devices auxDevice;
 
 		for(String[] line : data) {
 			id 		 = line[0];
@@ -153,7 +155,7 @@ public class BildPerfil {
 			pc 		 = line[3];
 			activity = line[4];
 
-			Devices auxDevice = new Devices(id, date, user, pc, activity);
+			auxDevice = new Devices(id, date, user, pc, activity);
 			device.add(auxDevice);
 		}
 
