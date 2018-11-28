@@ -27,6 +27,7 @@ public class Debug {
 		
         System.out.println("Teste para a classe Controller");
         Controller controle = new Controller();
+        
         controle.createUsers("../InsideThreat/Data/LDAP.csv"); // Passado o caminho dos arquivos de user 
         controle.createLogon("../InsideThreat/Data/logon.csv");
         controle.createDevices("../InsideThreat/Data/device.csv");
@@ -43,6 +44,7 @@ public class Debug {
         controle.ShowRanking("Security");
         // NÃO ESTÁ ACESSANDO, POIS TODOS OS LAÇOS ENVOLVENDO O MAP DE PERFIS MÉDIOS NÃ ESTÃO ENTRANDO!
         controle.viewAverangeProfile("Security");
+
         
     }
 }

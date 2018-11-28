@@ -22,7 +22,7 @@ public class NodeUser  implements Node<User,Tempo>{
 
 	//**Add filhos a um Node a partir de um List de Nodes **/
 	public void addChildren(List<NodeTempo> children) {
-	 	children.forEach(each -> each.setParent(this));
+	 	//children.forEach(each -> each.setParent(this));
 	 	this.children.addAll(children);
  	}
 

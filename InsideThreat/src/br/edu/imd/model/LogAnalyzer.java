@@ -1,11 +1,13 @@
 package br.edu.imd.model;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Classe responsável em fazer leitura de arquivos com uma formatação
@@ -14,7 +16,7 @@ import java.util.List;
 public class LogAnalyzer {
 	// Usado para armazenar as linhas dos arquivos
 	private List<String[]> entries = new LinkedList<String[]>();
-	private BufferedReader filebr = null;
+	private FileInputStream filebr = null;
 
 	/**
 	 * O método usado para ler uma arquivo scv linha por linha, cada linha é um índice do conteiner entries
@@ -26,11 +28,16 @@ public class LogAnalyzer {
 
 		try {
             System.out.println("Lendo o arquivo:" + filename);
-			filebr  = new BufferedReader(new FileReader(filename));
+			filebr  = new FileInputStream(filename);
+                        Scanner scanner = new Scanner(filebr);
+                        scanner.useDelimiter("\\n"); 
 			String line;
+                        String filds[];
                         
-			while((line = filebr.readLine()) != null) {
-				String filds[] = line.split(separate);
+			while(scanner.hasNext()) {
+				line = scanner.next();
+                                filds = line.split(separate);
+                                
 				entries.add(filds);
 			}
 

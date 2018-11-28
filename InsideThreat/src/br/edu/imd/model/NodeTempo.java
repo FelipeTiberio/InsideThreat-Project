@@ -26,7 +26,7 @@ public class NodeTempo implements Node<Tempo,Devices> {
 
 	//**Add filhos a um Node a partir de um List de Nodes **/
 	public void addChildren(List<NodePc>children) {
-	 	children.forEach(each -> each.setParent(this));
+	 	//children.forEach(each -> each.setParent(this));
 	 	this.children.addAll(children);
  	}
 
