@@ -18,9 +18,10 @@ public class Debug {
         //controle.viewUser("Burton M Stephenson");
         
         controle.createDistanceValue();
-        controle.ShowRanking("IT Admin");
-        controle.SearchAnomaly("Castor L Nelson");
-        controle.SearchAnomaly("Isaiah R Chen");
+        controle.showRanking("IT Admin");
+        controle.searchAnomaly("Castor L Nelson");
+        controle.searchAnomaly("Isaiah R Chen");
+        controle.compareUsers("Castor L Nelson", "Isaiah R Chen");
         controle.viewAllAverangeProfile();
   
     }

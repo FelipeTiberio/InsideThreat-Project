@@ -72,7 +72,7 @@ public class Controller {
 	 * Método para verificação se determinado usuário é uma anomalia
 	 * @param user usuário a ser verificado
 	 */
-	public void SearchAnomaly(String name) {
+	public void searchAnomaly(String name) {
 		if(anomaly.analyzeUser(name)) {
 			 System.out.println("O usuário " + name + " é uma anomalia!");
 		 } else {
@@ -93,6 +93,35 @@ public class Controller {
 			}
 		} else {
 			System.out.println("Não existe user com esse id");
+		}
+	}
+	
+	/**
+	 * Método para compara dois usuários, assim mostrando seus histogramas.
+	 * @param nameOne O nome do primeiro usuário a ser comparado
+	 * @param nameTwo O nome do segundo usuário a ser comparado
+	 */
+	public void compareUsers(String nameOne, String nameTwo) {
+		if(keep.existUser(nameOne) && keep.existUser(nameTwo)) {
+			for(ProfileTree users : keep.getUsers()) {
+				if(users.raiz().getData().getEmployerName().equals(nameOne)) {
+					Histograma histogram = users.raiz().getHistogram();
+					System.out.println("\n----- Histograma do usuário " + users.raiz().getData().getEmployerName() + " -----");
+					for(int i = 0; i < 24; i++) {
+						System.out.print(histogram.getValue(i) + " | ");
+					}
+					System.out.print("\n");
+				} else if(users.raiz().getData().getEmployerName().equals(nameTwo)){
+					Histograma histogram = users.raiz().getHistogram();
+					System.out.println("\n----- Histograma do usuário " + users.raiz().getData().getEmployerName() + " -----");
+					for(int i = 0; i < 24; i++) {
+						System.out.print(histogram.getValue(i) + " | ");
+					}
+					System.out.print("\n");
+				}
+			}
+		} else {
+			System.out.println("Algum dos usuários não existem.");
 		}
 	}
 	
@@ -141,7 +170,7 @@ public class Controller {
 	 * @return ArrayList de usuário em ordem crescente, ou seja, os primeiros com
 	 * os valores mais próximo de zero.
 	 */
-	public void ShowRanking(String role){
+	public void showRanking(String role){
 		ArrayList<User> ranking = anomaly.createRanking(role);
 		System.out.println("\n----- Ranking de usuários do papel " + role + " -----");
 		for(int i = 0; i < ranking.size(); i++) {
