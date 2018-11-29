@@ -60,9 +60,11 @@ public class Controller {
 	
 	/**
 	 * Método para criação dos valores de distância entre o histograma dos usários com 
-	 * os dos perfis médios de cada papel
+	 * os dos perfis médios de cada papel. Antes realizo a atulização dos valores dos 
+	 * histogramas dos perfis médios.
 	 */
 	public void createDistanceValue() {
+		keep.attHistogram();
 		anomaly.enterDistanceValue();
 	}
 	
@@ -115,15 +117,22 @@ public class Controller {
 	}
 	
 	/**
-	 * Método para visualização de histograma de um perfil médio
+	 * Método para visualização de histograma de um perfil médio.
+	 * Verifico se o histograma do perfil médio está atualizado primeiramente,
+	 * caso não, realizado a atualização.
 	 * @param role papel do perfil médio desejado
 	 */
 	public void viewAverangeProfile(String role) {
 		if(keep.existAverangeProfile(role)) {
-			Histograma histogram = keep.getUsersAverangeProfile().get(role).getHistogram();
-			System.out.println("----- Histograma do perfil médio do papel " + role + " -----");
-			for(int i = 0; i < 24; i++) {
-				System.out.print(histogram.getValue(i) + " | ");
+			if(keep.getUsersAverangeProfile().get(role).getHistogram().isAtt()) {
+				Histograma histogram = keep.getUsersAverangeProfile().get(role).getHistogram();
+				System.out.println("----- Histograma do perfil médio do papel " + role + " -----");
+				for(int i = 0; i < 24; i++) {
+					System.out.print(histogram.getValue(i) + " | ");
+				}
+			} else {
+				keep.getUsersAverangeProfile().get(role).attValuesAvernageProfile();
+				viewAverangeProfile(role);
 			}
 		} else {
 			System.out.println("Não existe perfil médio com esse papel.");

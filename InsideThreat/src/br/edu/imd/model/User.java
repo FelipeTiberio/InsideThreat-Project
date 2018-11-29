@@ -12,6 +12,7 @@ public class User implements Comparable<User>{
 	private String domain;
 	private String role;
 	private double distanceValue;
+	private boolean contributesAverngeProfile;
 	
 	/**
 	 * Construtor padrão da classe
@@ -34,6 +35,7 @@ public class User implements Comparable<User>{
 		this.domain = domain;
 		this.role = role;
 		this.distanceValue = 0;
+		this.contributesAverngeProfile = false;
 	}
 
 	/**
@@ -130,6 +132,22 @@ public class User implements Comparable<User>{
 	 */
 	public void setDistanceValue(double distance_value) {
 		this.distanceValue = distance_value;
+	}
+	
+	/**
+	 * Método para reotrnar valor lógico que informa se o usário já foi contabilizado no perfil médio
+	 * @return boolean que caso seja verdadeiro, ele á foi contabilizado, caso contrário, retorna falso
+	 */
+	public boolean isContributesAverngeProfile() {
+		return contributesAverngeProfile;
+	}
+	
+	/**
+	 * Método setter para o atributo contributesAverangeProfile
+	 * @param contributesAverngeProfile novo valor lógico que será atribuído
+	 */
+	public void setContributesAverngeProfile(boolean contributesAverngeProfile) {
+		this.contributesAverngeProfile = contributesAverngeProfile;
 	}
 
 	/**

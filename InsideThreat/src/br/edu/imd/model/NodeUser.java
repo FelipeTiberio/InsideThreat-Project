@@ -1,6 +1,5 @@
 package br.edu.imd.model;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -56,6 +55,20 @@ public class NodeUser  implements Node<User,Tempo>{
 	 */
 	public void addToHistogra(int valor, int id) {
 		this.histogram.add(valor, id);
+	}
+	
+	/**
+	 * Método que acrescenta usuário na quantidade users de mesmo papel ao histograma
+	 */
+	public void addUserHistogram() {
+		this.histogram.addQtdUsers();
+	}
+	
+	/**
+	 * Método que faz a atualização dos valores do histograma ao qual representa
+	 */
+	public void attValuesAvernageProfile() {
+		this.histogram.attValues();
 	}
 
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import br.edu.imd.model.Histograma;
-import br.edu.imd.model.NodeUser;
 import br.edu.imd.model.User;
 
 /**
@@ -84,11 +83,7 @@ public class AnomalyAnalysis {
 			}
 		}
 	
-		for(NodeUser nodeAverangeProfile : keep.getUsersAverangeProfile().values()) {
-			if(nodeAverangeProfile.getData().getRole().equals(user.getRole())) {
-				averangeProfileHistogram = nodeAverangeProfile.getHistogram();
-			}
-		}
+		averangeProfileHistogram = keep.getUsersAverangeProfile().get(user.getRole()).getHistogram();
 		
 		double aux = 0;
 		for(int i = 0; i < 24; i++) {

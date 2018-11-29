@@ -104,15 +104,19 @@ public class KeepTrees {
      */
     public void addActivityAverangeProfile(User user, Activity activity) {	
     	if(existAverangeProfile(user.getRole())) {
-    		String[] data = new String[2];
-        	String aux;
+    		String data[] = new String[2];
         	int hora;
         			
         	data = activity.getDate().split(" ");
-        	aux = data[1].substring(0, 1);
-        	hora = Integer.parseInt(aux);
-        			
-        	usersAverangeProfile.get(user.getRole()).addToHistogra(1, hora);
+        	hora = Integer.parseInt(data[1].substring(0, 2));
+        	
+        	if(user.isContributesAverngeProfile()) {
+        		usersAverangeProfile.get(user.getRole()).addToHistogra(1, hora);
+        	} else {
+        		usersAverangeProfile.get(user.getRole()).addUserHistogram();
+        		user.setContributesAverngeProfile(true);
+        		usersAverangeProfile.get(user.getRole()).addToHistogra(1, hora);
+        	}
     	} else {
     		createAverangeProfile(user.getRole());
     		addActivityAverangeProfile(user, activity);
@@ -144,6 +148,23 @@ public class KeepTrees {
         	}
     	}
     	return false;	
+    }
+    
+    /**
+     * Método que faz a atulização dos valores de todos os histogramas
+     */
+    public void attHistogram() {
+    	for(Map.Entry<String, NodeUser> users : usersAverangeProfile.entrySet()) {
+    		users.getValue().attValuesAvernageProfile();
+    	}
+    }
+    
+    /**
+     * Método que a atualização de um hitstograma específico
+     * @param role papel a qual perfil médio terá o histograma atualizado
+     */
+    public void attHistogram(String role) {
+    	usersAverangeProfile.get(role).attValuesAvernageProfile();
     }
 	
 	/**
