@@ -103,10 +103,14 @@ public class Controller {
 	 * @param name nome do user a qual será impresso a árvore
 	 */
 	public void viewUser(String name) {
-		for(ProfileTree users : keep.getUsers()) {
-			if(users.raiz().getData().getEmployerName().equals(name)) {
-				users.preintTree(users.raiz(), " ");
+		if(keep.existUser(name)) {
+			for(ProfileTree users : keep.getUsers()) {
+				if(users.raiz().getData().getEmployerName().equals(name)) {
+					users.preintTree(users.raiz(), " ");
+				}
 			}
+		} else {
+			System.out.println("Não existe user com esse id");
 		}
 	}
 	
@@ -115,35 +119,15 @@ public class Controller {
 	 * @param role papel do perfil médio desejado
 	 */
 	public void viewAverangeProfile(String role) {
-                String k ;
-                NodeUser v;
-
-		// NÃO ESTÁ ENTRANDO NO LAÇO
-		//keep.getUsersAverangeProfile().forEach((k,v) -> {
-                 for(Map.Entry<String,NodeUser> entry : keep.getUsersAverangeProfile().entrySet() ){
-                      k = entry.getKey();
-                      v = entry.getValue();
-                     if(k.equals(role)) {
-				Histograma histogram = v.getHistogram();
-				for(int i = 0; i < 24; i++) {
-					System.out.println(histogram.getValue(i) + " | ");
-				}
+		if(keep.existAverangeProfile(role)) {
+			Histograma histogram = keep.getUsersAverangeProfile().get(role).getHistogram();
+			System.out.println("----- Histograma do perfil médio do papel " + role + " -----");
+			for(int i = 0; i < 24; i++) {
+				System.out.print(histogram.getValue(i) + " | ");
 			}
-		};
-		
-		/**
-		for(Map.Entry<String,NodeUser> user : keep.getUsersAverangeProfile().entrySet()) {
-			System.out.println("Entrou no primeiro laço");
-			if(user.getKey().equals(role)) {
-				System.out.println("Entrou no if");
-				Histograma histogram = user.getValue().getHistogram();
-				for(int i = 0; i < 24; i++) {
-					System.out.println("Entrou no segundo laço");
-					System.out.println(histogram.getValue(i) + " | ");
-				}
-			}
-		}
-		*/
+		} else {
+			System.out.println("Não existe perfil médio com esse papel.");
+		}	
 	}
         	
 }

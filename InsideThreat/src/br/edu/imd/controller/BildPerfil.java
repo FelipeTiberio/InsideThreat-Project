@@ -48,9 +48,10 @@ public class BildPerfil {
 			domain 		  = line[3];
 			role 		  = line[4];
 
-			user = new User(employer_name, user_id, email, domain, role.replace( role.substring(role.length() -1, role.length()) , ""));
+			user = new User(employer_name, user_id, email, domain, role.replace(role.substring(role.length()-1, role.length()),""));
 			users.add(user);
 		}
+		users.remove(0);
 		return users;
 	}
 	
@@ -87,6 +88,7 @@ public class BildPerfil {
 			http.add(auxHttp);
 		}
         System.out.println("Terminei a leitura do arquivo");
+        http.remove(0);
 		return http;
 	}
 	
@@ -122,7 +124,7 @@ public class BildPerfil {
 			auxLogon = new Logon(id, date, user, pc, activity);
 			logon.add(auxLogon);
 		}
-
+		logon.remove(0);
 		return logon;
 	}
 	
@@ -158,7 +160,7 @@ public class BildPerfil {
 			auxDevice = new Devices(id, date, user, pc, activity);
 			device.add(auxDevice);
 		}
-
+		device.remove(0);
 		return device;
 	}
 

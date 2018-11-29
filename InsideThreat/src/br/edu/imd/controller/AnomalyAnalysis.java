@@ -33,7 +33,7 @@ public class AnomalyAnalysis {
 	 */
 	public boolean analyzeUser(User user) {
 		
-		if(keep.existUser(user) && keep.searchAverangeProfile(user)) {	
+		if(keep.existUser(user.getEmployerName()) && keep.existAverangeProfile(user.getRole())) {	
 			
 			int contAux = 0;
 			double valueAux = 0;
@@ -84,7 +84,6 @@ public class AnomalyAnalysis {
 			}
 		}
 	
-		// 	NÃO ESTÁ ENTRANDO NO LAÇO
 		for(NodeUser nodeAverangeProfile : keep.getUsersAverangeProfile().values()) {
 			if(nodeAverangeProfile.getData().getRole().equals(user.getRole())) {
 				averangeProfileHistogram = nodeAverangeProfile.getHistogram();
@@ -108,7 +107,6 @@ public class AnomalyAnalysis {
 	 */
 	public ArrayList<User> createRanking(String role){
 		ArrayList<User> ranking = new ArrayList<User>();
-		//String aux;
 		for(ProfileTree nodeUser : keep.getUsers()) {   
 			if(nodeUser.raiz().getData().getRole().equalsIgnoreCase(role)) {
 				ranking.add(nodeUser.raiz().getData());
