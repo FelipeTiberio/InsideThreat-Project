@@ -25,36 +25,40 @@ public class AnomalyAnalysis {
 	
 	/**
 	 * Método responsável por verficar se o valor de distância do histograma do usuário é recebido é maior
-	 * que a média dos valores de todos os usuário de mesmo pale que o seu.
-	 * @param user usário a ser verificado.
+	 * que a média dos valores de todos os usuário de mesmo papel que o seu.
+	 * @param name nome do usário a ser verificado.
 	 * @return boolean que caso o usuário esteja com um valor de distância maior será verdadeiro, ao contrário
 	 * será falso.
 	 */
-	public boolean analyzeUser(User user) {
+	public boolean analyzeUser(String name) {
+		
+		User user = new User();
+		for(ProfileTree users : keep.getUsers()) {
+			if(users.raiz().getData().getEmployerName().equals(name)) {
+				user = users.raiz().getData();
+			}
+		}
 		
 		if(keep.existUser(user.getEmployerName()) && keep.existAverangeProfile(user.getRole())) {	
-			
 			int contAux = 0;
 			double valueAux = 0;
-			String roleAux = user.getRole();
 			
 			for(ProfileTree nodeUser : keep.getUsers()) {
-				if(nodeUser.raiz().getData().getRole().equals(roleAux)) {
+				if(nodeUser.raiz().getData().getRole().equals(user.getRole())) {
 					contAux++;
 					valueAux += nodeUser.raiz().getData().getDistanceValue();
 				}
 			}
 			
 			valueAux = valueAux/contAux;
-			
-			if(user.getDistanceValue() <= valueAux && user.getDistanceValue() > 0) 
+			if(user.getDistanceValue() <= valueAux && user.getDistanceValue() > 0) {
 				return false;
+			}
 			
 		} 	else {
 				System.out.println("Usário não existe ou não existe histograma de perfil médio do seu"
 					+ "papel definido.");
 		}
-		
 		return true;		
 	}
 	

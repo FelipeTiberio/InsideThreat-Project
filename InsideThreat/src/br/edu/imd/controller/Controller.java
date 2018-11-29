@@ -71,35 +71,15 @@ public class Controller {
 	/**
 	 * Método para verificação se determinado usuário é uma anomalia
 	 * @param user usuário a ser verificado
-	 * @return boolean com resposta do método analyzerUser da classe anomaly
 	 */
-	public boolean SearchAnomaly(User user) {
-		return anomaly.analyzeUser(user);
+	public void SearchAnomaly(String name) {
+		if(anomaly.analyzeUser(name)) {
+			 System.out.println("O usuário " + name + " é uma anomalia!");
+		 } else {
+			 System.out.println("O usuário " + name + " não é uma anomalia!");
+		 }
 	}
-	
-	/**
-	 * Método para criação de ranking dos usuários de determinado papel em relação 
-	 * ao valor de distância Euclidiana
-	 * @param role papel dos usários a ser colocado no ranking
-	 * @return ArrayList de usuário em ordem crescente, ou seja, os primeiros com
-	 * os valores mais próximo de zero.
-	 */
-	public void ShowRanking(String role){
-		ArrayList<User> ranking = anomaly.createRanking(role);
-		for(int i = 0; i < ranking.size(); i++) {
-			System.out.println(i+1 + " - " + ranking.get(i).getEmployerName() + " - Value: " + 
-			ranking.get(i).getDistanceValue());
-		}
-	}
-	
-	/**
-	 * Método que mostra a quantidade de usuários cadastrados
-	 * @return int com a quantidade de usuários
-	 */
-	public int qtdUsers() {
-		return keep.getUsers().size();
-	}
-	
+		
 	/**
 	 * Método que imprime árvore de um usáriuo específico
 	 * @param name nome do user a qual será impresso a árvore
@@ -137,6 +117,46 @@ public class Controller {
 		} else {
 			System.out.println("Não existe perfil médio com esse papel.");
 		}	
+	}
+	
+	/**
+	 * Método para visualização de todos os histograma de perfis médios.
+	 */
+	public void viewAllAverangeProfile() {
+		System.out.print("\n");
+		for(Map.Entry<String, NodeUser> users : keep.getUsersAverangeProfile().entrySet()) {
+			Histograma histogram = users.getValue().getHistogram();
+			System.out.println("----- Histograma do perfil médio do papel " + users.getKey() + " -----");
+			for(int i = 0; i < 24; i++) {
+				System.out.print(histogram.getValue(i) + " | ");
+			}
+			System.out.println("\n");
+		}
+	}
+	
+	/**
+	 * Método para criação de ranking dos usuários de determinado papel em relação 
+	 * ao valor de distância Euclidiana
+	 * @param role papel dos usários a ser colocado no ranking
+	 * @return ArrayList de usuário em ordem crescente, ou seja, os primeiros com
+	 * os valores mais próximo de zero.
+	 */
+	public void ShowRanking(String role){
+		ArrayList<User> ranking = anomaly.createRanking(role);
+		System.out.println("\n----- Ranking de usuários do papel " + role + " -----");
+		for(int i = 0; i < ranking.size(); i++) {
+			System.out.println(i+1 + " - " + ranking.get(i).getEmployerName() + " - Value: " + 
+			ranking.get(i).getDistanceValue());
+		}
+		System.out.print("\n");
+	}
+	
+	/**
+	 * Método que mostra a quantidade de usuários cadastrados
+	 * @return int com a quantidade de usuários
+	 */
+	public int qtdUsers() {
+		return keep.getUsers().size();
 	}
         	
 }
