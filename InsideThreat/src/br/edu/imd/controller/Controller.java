@@ -109,6 +109,10 @@ public class Controller {
 		}
 	}
 	
+	/**
+	 * Método para visualização de histograma de um perfil médio
+	 * @param role papel do perfil médio desejado
+	 */
 	public void viewAverangeProfile(String role) {
 
 		// NÃO ESTÁ ENTRANDO NO LAÇO
