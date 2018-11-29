@@ -29,8 +29,8 @@ public class Debug {
         Controller controle = new Controller();
         
         controle.createUsers("../InsideThreat/Data/LDAP.csv"); // Passado o caminho dos arquivos de user 
-        controle.createLogon("../InsideThreat/Data/logon.csv");
-        controle.createDevices("../InsideThreat/Data/device.csv");
+        //controle.createLogon("../InsideThreat/Data/logon.csv");
+        //controle.createDevices("../InsideThreat/Data/device.csv");
         //controle.createHttp("../InsideThreat/Data/http.csv"); 
          
         System.out.println("Quantidade de árvore de usuários cadastrados: " + controle.qtdUsers());
@@ -43,7 +43,7 @@ public class Debug {
         controle.createDistanceValue();
         controle.ShowRanking("Security");
         // NÃO ESTÁ ACESSANDO, POIS TODOS OS LAÇOS ENVOLVENDO O MAP DE PERFIS MÉDIOS NÃ ESTÃO ENTRANDO!
-        controle.viewAverangeProfile("Security");
+        controle.viewAverangeProfile("Engineer");
 
         
     }
