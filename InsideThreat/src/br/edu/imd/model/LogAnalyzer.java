@@ -25,18 +25,19 @@ public class LogAnalyzer {
 	 * @throws IOException
 	 */
 	public void  readFile(String filename, String separate) throws IOException {
-
+		
+		entries.clear();
 		try {
             System.out.println("Lendo o arquivo:" + filename);
 			filebr  = new FileInputStream(filename);
                         Scanner scanner = new Scanner(filebr);
                         scanner.useDelimiter("\\n"); 
 			String line;
-                        String filds[];
+            String filds[];
                         
 			while(scanner.hasNext()) {
 				line = scanner.next();
-                                filds = line.split(separate);
+                filds = line.split(separate);
                                 
 				entries.add(filds);
 			}

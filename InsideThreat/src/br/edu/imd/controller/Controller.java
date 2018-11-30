@@ -43,6 +43,14 @@ public class Controller {
 	}
 	
 	/**
+	 * Método para criação das atvidades de http através do arquivo em um período específico.
+	 * @param wayFile caminho do arquivo com os dados dos usuários
+	 */
+	public void createHttp(String wayFile, String startDate, String finalDate) {
+		keep.addActivity(bild.buildHttp(wayFile, startDate, finalDate));
+	}
+	
+	/**
 	 * Método para criação das atvidades de Logon através do arquivo
 	 * @param wayFile caminho do arquivo com os dados dos usuários
 	 */
@@ -51,11 +59,27 @@ public class Controller {
 	}
 	
 	/**
+	 * Método para criação das atvidades de Logon através do arquivo em um período específico.
+	 * @param wayFile caminho do arquivo com os dados dos usuários
+	 */
+	public void createLogon(String wayFile, String startDate, String finalDate) {
+		keep.addActivity(bild.buildLogon(wayFile, startDate, finalDate));
+	}
+	
+	/**
 	 * Método para criação das atvidades de Devices através do arquivo
 	 * @param wayFile caminho do arquivo com os dados dos usuários
 	 */
 	public void createDevices(String wayFile) {
 		keep.addActivity(bild.buildDevices(wayFile));
+	}
+	
+	/**
+	 * Método para criação das atvidades de Devices através do arquivoem um período específico.
+	 * @param wayFile caminho do arquivo com os dados dos usuários
+	 */
+	public void createDevices(String wayFile, String startDate, String finalDate) {
+		keep.addActivity(bild.buildDevices(wayFile, startDate, finalDate));
 	}
 	
 	/**

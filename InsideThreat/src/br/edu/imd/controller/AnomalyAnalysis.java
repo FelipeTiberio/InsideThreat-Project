@@ -57,7 +57,7 @@ public class AnomalyAnalysis {
 			
 		} 	else {
 				System.out.println("Usário não existe ou não existe histograma de perfil médio do seu"
-					+ "papel definido.");
+					+ " papel definido.");
 		}
 		return true;		
 	}
