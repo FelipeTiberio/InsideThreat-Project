@@ -74,7 +74,8 @@ public class NodePc implements Node<Pc,Activity>{
 	 * Método getter para o atributo children.
 	 * @return list com todos os filhos do Node.
 	 */
- 	public List<NodeActivity> getChildren() {
+ 	@SuppressWarnings("unchecked")
+	public List<NodeActivity> getChildren() {
  		return children;
  	}
 

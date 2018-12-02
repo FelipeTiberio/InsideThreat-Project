@@ -34,6 +34,7 @@ public class ProfileTree {
 	 * O método adiciona mais um NodePc como filho de Tempo.
 	 * @param newPc Argumento será usado como paramêtro para um novo NodePc.
 	 */
+	@SuppressWarnings("unused")
 	private void addPc(Pc newPc) {
 		raiz.getChildren().get(0).addChild(new NodePc(newPc));;
 	}
@@ -111,10 +112,11 @@ public class ProfileTree {
 	 * @param node Node a qual deseja imprimir.
 	 * @param appender string que é utilizada para separar informações.
 	 */
+	@SuppressWarnings("unchecked")
 	public static <F,T>  void preintTree(Node<F,T> node, String appender) {
 		System.out.println(appender + node.getData());
 		   //node.getChildren().forEach(each -> preintTree(each, appender + appender));
-		for(Node n : node.getChildren()) {
+		for(@SuppressWarnings("rawtypes") Node n : node.getChildren()) {
 			preintTree(n, appender + appender);
 		}
 	}

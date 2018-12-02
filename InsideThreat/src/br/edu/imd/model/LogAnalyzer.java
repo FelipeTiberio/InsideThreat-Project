@@ -39,6 +39,7 @@ public class LogAnalyzer {
                                 
 				entries.add(filds);
 			}
+			scanner.close();
 
 		}catch (FileNotFoundException e) {
 			System.out.println(e.getLocalizedMessage());

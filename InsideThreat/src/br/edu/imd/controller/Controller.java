@@ -132,7 +132,7 @@ public class Controller {
 		if(keep.existUser(name)) {
 			for(ProfileTree users : keep.getUsers()) {
 				if(users.raiz().getData().getEmployerName().equals(name)) {
-					users.preintTree(users.raiz(), " ");
+					ProfileTree.preintTree(users.raiz(), " ");
 				}
 			}
 		} else {

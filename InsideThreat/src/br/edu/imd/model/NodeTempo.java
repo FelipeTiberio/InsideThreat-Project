@@ -74,7 +74,8 @@ public class NodeTempo implements Node<Tempo,Devices> {
 	 * Método getter para o atributo children.
 	 * @return list com todos os filhos do Node.
 	 */
- 	public List<NodePc> getChildren() {
+ 	@SuppressWarnings("unchecked")
+	public List<NodePc> getChildren() {
  		return children;
  	}
 

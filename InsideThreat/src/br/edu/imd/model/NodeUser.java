@@ -97,7 +97,8 @@ public class NodeUser  implements Node<User,Tempo>{
 	 * Método getter para o atributo children.
 	 * @return list com todos os filhos do Nod.e
 	 */
- 	public List<NodeTempo> getChildren() {
+ 	@SuppressWarnings("unchecked")
+	public List<NodeTempo> getChildren() {
  		return children;
  	}
 
