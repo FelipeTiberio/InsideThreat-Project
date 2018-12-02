@@ -219,22 +219,20 @@ public class Controller {
 	}
 	
 	/**
-	 * Método public usando para salvar todos árvores em  um arquivo.
+	 * Método public usado para salvar todos árvores em um arquivo.
 	 * Lembrando que cada ProfileTree terá um arquivo diferente.
-	 * Em que cada nome de arquivo será "userId".csv
+	 * Onde, cada nome de arquivo será "userId".csv
 	 */
-	
 	public void saveForest() {
-           
             for(ProfileTree user : this.keep.getUsers()) {
             	this.saveTree(user);
             }	
 	}
-	/** 
-	 * Recebe um ProfileTree e guarda seus dados em um arquivo
-	 * @param treeUser
-	 */
 	
+	/** 
+	 * Recebe um ProfileTree e guarda seus dados em um arquivo.
+	 * @param treeUser objeto profileTree que terá seus dados salvos.
+	 */
 	private void saveTree(ProfileTree treeUser ) {
 		try {
 			User user = treeUser.raiz().getData();
@@ -269,15 +267,18 @@ public class Controller {
 		
 	}
 	
-	public void salvarPerfil(String nome) {
-		int n = this.keep.buscaUserPorNome(nome);
+	/**
+	 * Método utilizado para chamar método saveTree de um único usuário.
+	 * @param name Nome do usuário a qual deseja ter seus dados salvos.
+	 */
+	public void saveProfile(String name) {
+		int n = this.keep.searchUser(name);
 		if( n >= 0) {
 			this.saveTree(this.keep.getUsers().get(n));
 			
 		}else {
-			System.out.print("**Usuário "+ nome + " não está cadastrado.");
+			System.out.print("**Usuário "+ name + " não está cadastrado.");
 		}
-		
 	}
         	
 }

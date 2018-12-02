@@ -197,10 +197,10 @@ public class KeepTrees {
      * @return id da ProfileTree do usuário correspondente, caso não exista retorna -1;
      */
     
-    public int buscaUserPorNome(String nome) {
+    public int searchUser(String name) {
     	int n = 0;
     	for(ProfileTree user : this.users) {
-    		if(user.raiz().getData().getEmployerName().equals(nome)) {
+    		if(user.raiz().getData().getEmployerName().equals(name)) {
     			return n;
     		}
     		n++;	
