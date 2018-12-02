@@ -32,7 +32,7 @@ public class Debug {
         	System.out.println("(6)  - CRIAR ATIVIDADES DE HTTP EM UM PERÍODO ESPECÍFICO"); 
         	System.out.println("(7)  - VISUALIZAR ÁRVORE DE UM USUÁRIO");
         	System.out.println("(8)  - COMPARAR HISTOGRAMA DE DOIS USUÁRIOS");
-        	System.out.println("(9) - SALVAR ÁRVORE DE TODOS USUÁRIOS EM ARQUIVOS");
+        	System.out.println("(9)  - SALVAR ÁRVORE DE TODOS USUÁRIOS EM ARQUIVOS");
         	System.out.println("(10) - SALVAR ÁRVORE DE UM USUÁRIO EM ARQUIVO");
         	System.out.println("(11) - VERIFICAR SE USUÁRIO É UMA ANOMALIA");
         	System.out.println("(12) - VISUALIZAR HISTOGRAMAS DOS PERFIS MÉDIOS");
