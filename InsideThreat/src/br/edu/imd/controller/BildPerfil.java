@@ -51,7 +51,7 @@ public class BildPerfil {
 				domain 		  = line[3];
 				role 		  = line[4].replace(line[4].substring(line[4].length()-1, line[4].length()),"");
 
-				user = new User(employer_name, user_id, email, domain, role.replace(role.substring(role.length()-1, role.length()),""));
+				user = new User(employer_name, user_id, email, domain, role);
 				users.add(user);
 			}
 		}
