@@ -1,17 +1,13 @@
 package br.edu.imd.controller;
 
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import br.edu.imd.model.*;
 import java.util.Map;
-
-
 
 /**
  * Classe controller será responsável por manter toda a organização e divisão de tarefas do sistema.
@@ -229,6 +225,20 @@ public class Controller {
             }	
 	}
 	
+	/**
+	 * Método utilizado para chamar método saveTree de um único usuário.
+	 * @param name Nome do usuário a qual deseja ter seus dados salvos.
+	 */
+	public void saveProfile(String name) {
+		int n = this.keep.searchUser(name);
+		if( n >= 0) {
+			this.saveTree(this.keep.getUsers().get(n));
+			
+		}else {
+			System.out.print("**Usuário "+ name + " não está cadastrado.");
+		}
+	}
+	
 	/** 
 	 * Recebe um ProfileTree e guarda seus dados em um arquivo.
 	 * @param treeUser objeto profileTree que terá seus dados salvos.
@@ -265,20 +275,6 @@ public class Controller {
 			e.printStackTrace();
 		}
 		
-	}
-	
-	/**
-	 * Método utilizado para chamar método saveTree de um único usuário.
-	 * @param name Nome do usuário a qual deseja ter seus dados salvos.
-	 */
-	public void saveProfile(String name) {
-		int n = this.keep.searchUser(name);
-		if( n >= 0) {
-			this.saveTree(this.keep.getUsers().get(n));
-			
-		}else {
-			System.out.print("**Usuário "+ name + " não está cadastrado.");
-		}
 	}
         	
 }

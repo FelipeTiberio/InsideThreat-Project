@@ -1,11 +1,28 @@
 package br.edu.imd.controller;
 
+import java.util.Scanner;
+
 public class Debug {
 
 	public static void main(String[] args) {
 
         Controller controle = new Controller();
+        Scanner scan = new Scanner(System.in);
         
+        int aux = scan.nextInt();
+        
+        switch(aux) {
+        	case 1:
+        		break;
+        	case 2:
+        		break;
+        	case 3: 
+        		break;
+        	case 4:
+        		break;
+        	case 5:
+        		break;
+        }
         /**
          * Criação de todos os usários presente no arquivo LDAP.
          */
