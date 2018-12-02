@@ -1,11 +1,17 @@
 package br.edu.imd.controller;
 
-import java.util.ArrayList;
 
-import br.edu.imd.model.Histograma;
-import br.edu.imd.model.NodeUser;
-import br.edu.imd.model.User;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import br.edu.imd.model.*;
 import java.util.Map;
+
+
 
 /**
  * Classe controller será responsável por manter toda a organização e divisão de tarefas do sistema.
@@ -211,5 +217,65 @@ public class Controller {
 	public int qtdUsers() {
 		return keep.getUsers().size();
 	}
+	
+	/**
+	 * Método public usando para salvar todos árvores em  um arquivo.
+	 * Lembrando que cada ProfileTree terá um arquivo diferente.
+	 * Em que cada nome de arquivo será "userId".csv
+	 */
+	
+	public void saveForest() {
+           
+            for(ProfileTree user : this.keep.getUsers()) {
+            	this.saveTree(user);
+            }	
+	}
+	/** 
+	 * Recebe um ProfileTree e guarda seus dados em um arquivo
+	 * @param treeUser
+	 */
+	
+	public void saveTree(ProfileTree treeUser ) {
+		try {
+			User user = treeUser.raiz().getData();
+			Histograma histo = treeUser.raiz().getHistogram();
+			String nomeArquivo = "../InsideThreat/DB/".concat(user.getUserId().replace("DTAA/", "")).concat(".csv");
+			File file = new File( nomeArquivo ); file.delete();
+			FileWriter fw = new FileWriter(nomeArquivo, true);
+			BufferedWriter conexao = new BufferedWriter(fw);
+			
+			for(String str : user.status()) { // Primeira linha do arquivo dados do user
+				conexao.write(str);
+			}
+			conexao.newLine();
+			conexao.write(Arrays.toString(histo.getHistograma()));
+			conexao.newLine();
+			
+			
+			for(NodeTempo tempo : treeUser.raiz().getChildren()) {
+				for(NodePc pc : tempo.getChildren()) {
+					for(NodeActivity act : pc.getChildren()) {
+						for(String str : act.getData().status()) { // Primeira linha do arquivo dados do user
+							conexao.write(str);
+						}
+						conexao.newLine();
+					}
+				}
+			}
+	
+			
+			//conexao.newLine();
+			conexao.close();
+			
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	   
+	   
+		
+	}	
         	
 }

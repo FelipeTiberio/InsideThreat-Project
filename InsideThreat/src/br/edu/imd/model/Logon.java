@@ -43,4 +43,19 @@ public class Logon extends Activity {
 	public String toString() {
 		return "Logon [activity=" + activity + "]";
 	}
+
+	/**
+	 * Retorna todos os dados de device em um array de Strings
+	 */
+	
+	@Override
+	public String[] status() {
+		String campos[] = new String[5];
+		campos[0] = this.getId();
+		campos[1] = this.getDate();
+		campos[2] = this.getUser();
+		campos[3] = this.getPc();
+		campos[4] = this.getActivity();
+		return campos;
+	}
 }

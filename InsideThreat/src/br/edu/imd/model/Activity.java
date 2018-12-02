@@ -25,6 +25,8 @@ public abstract class Activity  {
 		this.pc = pc;
 	}
 	
+	public abstract String[] status();
+	
 	/**
 	 * Método getter do atributo id
 	 * @return String com o id da atvidade

@@ -41,7 +41,22 @@ public class Devices  extends Activity{
 	 */
     @Override
     public String toString() {
-        return "Devices [activity=" + this.activity + "]";
+        return "[Devices =" + this.getId() + "]";
     }
+    
+    /**
+     * Método retorna todos os dados de device em um array de strings
+     */
+
+	@Override
+	public String[] status() {
+		String campos[] = new String[5];
+		campos[0] = this.getId();
+		campos[1] = this.getDate();
+		campos[2] = this.getUser();
+		campos[3] = this.getPc();
+		campos[4] = this.getActivity();
+		return campos;
+	}
          
 }

@@ -43,4 +43,19 @@ public class Http extends Activity{
 	public String toString() {
 		return "Http [url=" + url + "]";
 	}
+	
+	/***
+	 * Método retorna todos os dados de Http em um array de strings
+	 */
+
+	@Override
+	public String[] status() {
+		String campos[] = new String[5];
+		campos[0] = this.getId();
+		campos[1] = this.getDate();
+		campos[2] = this.getUser();
+		campos[3] = this.getPc();
+		campos[4] = this.getUrl();
+		return campos;
+	}
 }

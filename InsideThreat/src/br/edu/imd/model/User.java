@@ -37,6 +37,20 @@ public class User implements Comparable<User>{
 		this.distanceValue = 0;
 		this.contributesAverngeProfile = false;
 	}
+	
+	/**
+	 * Método retorna todos os dados de user em um arrays de String
+	 */
+	
+	public String[] status() {
+		String campos[] = new String[5];
+		campos[0] = this.employerName;
+		campos[1] = this.userId;
+		campos[2] = this.email;
+		campos[3] = this.domain;
+		campos[4] = this.role;
+		return campos;
+	}
 
 	/**
 	 * Método getter para o atributo employerName
