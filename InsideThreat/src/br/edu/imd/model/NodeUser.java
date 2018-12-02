@@ -3,55 +3,45 @@ package br.edu.imd.model;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Classe que representa o node da árvore que possui o User como objeto.
+ * @author Felipe / Matheus
+ */
 public class NodeUser  implements Node<User,Tempo>{
 	private User data = null;
 	private Histograma histogram = new Histograma();
 	private List<NodeTempo> children = new LinkedList<NodeTempo>();
 	//private Node<T> parent = null;
 
+	/**
+	 * Construtor parametrizado da classe.
+	 * @param data o usuário que será o representante desse Node.
+	 */
 	public NodeUser(User data) {
 		 this.data = data;
 	}
 
-	/**Adiciona um filho a um Ã…Æ’ode, @return retorna o filho adicionado */
+	/**
+	 * Método que adiciona um filho ao NodeUser.
+	 * @param child o filho adicionado.
+	 */
 	public void addChild(NodeTempo child) {
 		child.setParent(this);
 		this.children.add(child);
 	}
 
-	//**Add filhos a um Node a partir de um List de Nodes **/
+	/**
+	 * Método que adiciona filhos ao Node a partir de um List de Nodes.
+	 * @param children a list de nodes que será adicionados.
+	 */
 	public void addChildren(List<NodeTempo> children) {
-	 	//children.forEach(each -> each.setParent(this));
 	 	this.children.addAll(children);
  	}
 
- 	/**@return retorna uma lista com todos os filhos de um node*/
- 	public List<NodeTempo> getChildren() {
- 		return children;
- 	}
-
- 	/**@return retorna o canteÃƒÂºdo armazenado em um nÃƒÂ³ */
- 	public User getData() {
- 		return data;
- 	}
-
- 	/**MÃƒÂ©todo usado guarda dados a um nÃƒÂ³ */
- 	public void setData(User data) {
- 		this.data = data;
- 	}
-
-	public Histograma getHistogram() {
-		return histogram;
-	}
-
-	public void setHistogram(Histograma histogram) {
-		this.histogram = histogram;
-	}
-
 	/**
-	 * Recebe um valor para ser acresentado no array do histograma no param id
-	 * @param valor
-	 * @param id
+	 * Recebe um valor para ser acresentado no array do histograma no índice id.
+	 * @param valor o valor que será acrescentado.
+	 * @param id o índice ao qual deve ser adicionado no array.
 	 */
 	public void addToHistogra(int valor, int id) {
 		this.histogram.add(valor, id);
@@ -70,5 +60,45 @@ public class NodeUser  implements Node<User,Tempo>{
 	public void attValuesAvernageProfile() {
 		this.histogram.attValues();
 	}
+
+ 	/**
+ 	 * Método getter para o atributo data.
+ 	 * @return o user amazenado no Node;
+ 	 */
+ 	public User getData() {
+ 		return data;
+ 	}
+
+ 	/**
+ 	 * Método setter para o atributo data.
+ 	 * @param data novo user que será adicionado ao atributo data.
+ 	 */
+ 	public void setData(User data) {
+ 		this.data = data;
+ 	}
+
+ 	/**
+ 	 * Método getter para o histogram.
+ 	 * @return o histograma do Node.
+ 	 */
+	public Histograma getHistogram() {
+		return histogram;
+	}
+
+	/**
+	 * Méttodo setter para o atributo histogram.
+	 * @param histogram o novo histograma que será adiconado ao atributo histogram.
+	 */
+	public void setHistogram(Histograma histogram) {
+		this.histogram = histogram;
+	}
+	
+	/**
+	 * Método getter para o atributo children.
+	 * @return list com todos os filhos do Nod.e
+	 */
+ 	public List<NodeTempo> getChildren() {
+ 		return children;
+ 	}
 
 }

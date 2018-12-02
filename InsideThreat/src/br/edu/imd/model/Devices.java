@@ -46,6 +46,7 @@ public class Devices  extends Activity{
     
     /**
      * Método retorna todos os dados de device em um array de strings
+     * @return array de string com os dados de devices.
      */
 
 	@Override

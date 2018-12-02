@@ -46,8 +46,8 @@ public class Http extends Activity{
 	
 	/***
 	 * Método retorna todos os dados de Http em um array de strings
+	 * @return array de string com os dados de http.
 	 */
-
 	@Override
 	public String[] status() {
 		String campos[] = new String[5];

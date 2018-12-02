@@ -4,28 +4,35 @@ import java.util.Date;
 import br.edu.imd.model.*;
 
 /**
- * Classe responsável por manter a estrutura de uma árvore
- * @author Felipe 
+ * Classe responsável por manter a estrutura de uma árvore.
+ * @author Felipe / Matheus
  */
 public class ProfileTree {
 	private NodeUser raiz = null;
 	
 	/**
-	 * @param user classe que armazerno  os dados dos usuários 
+	 * Construtor parametrizado da classe.
+	 * @param user o usuário que será a raiz da árovre. 
 	 */
 	ProfileTree(User user){
 		raiz = new NodeUser(user);
 		raiz.addChild(new NodeTempo(new Tempo()));
 	}
 	
+	/**
+	 * Construtor parametrizado para um périodo específico da árvore
+	 * @param user o usuário que será a raiz da árvore.
+	 * @param inicio data do início.
+	 * @param fim data final.
+	 */
 	ProfileTree(User user, Date inicio, Date fim ){
 		raiz = new NodeUser(user);
 		raiz.addChild(new NodeTempo(new Tempo(inicio, fim)));
 	}
 	
 	/**
-	 * O método adiciona mais um NodePc como filho de Tempo
-	 * @param newPc Argumento será usadocomo parametro para um novo Nó do tipo pc
+	 * O método adiciona mais um NodePc como filho de Tempo.
+	 * @param newPc Argumento será usado como paramêtro para um novo NodePc.
 	 */
 	private void addPc(Pc newPc) {
 		raiz.getChildren().get(0).addChild(new NodePc(newPc));;
@@ -49,11 +56,10 @@ public class ProfileTree {
 	
 	/**
 	 * Método usado para add de novas atividades na árvore de usuário.
-	 * O método primeiro verifica se o pc, correspondente aquela atividade já existe,
-	 * caso já exista, verifica se atividade já exites, caso não exita, adciona a nova atividade
+	 * @param activity atividade que será acrescentada.
+	 * @return O método primeiro verifica se o pc, correspondente aquela atividade já existe,
+	 * caso já exista, verifica se atividade já exite, caso não exita, adciona a nova atividade
 	 * caso já exista retona false.
-	 * @param activity
-	 * @return
 	 */
 	public boolean addActivity(Activity activity) {
 		// Buscas se o pc correspondente a atividade já existe na árvore 
@@ -93,13 +99,18 @@ public class ProfileTree {
 	}
 	
 	/**
-	 * Método retorna o Nodeuser 
-	 * @return o objeto Nodeuser que a ProfileTree é correspondente
+	 * Método retorna o Nodeuser, a raiz da árvore.
+	 * @return o objeto Nodeuser que a ProfileTree é correspondente.
 	 */
 	public NodeUser raiz() {
 		return raiz;
 	}
 	
+	/**
+	 * Método utilizado para imprimir na tela a árvore.
+	 * @param node Node a qual deseja imprimir.
+	 * @param appender string que é utilizada para separar informações.
+	 */
 	public static <F,T>  void preintTree(Node<F,T> node, String appender) {
 		System.out.println(appender + node.getData());
 		   //node.getChildren().forEach(each -> preintTree(each, appender + appender));
@@ -107,5 +118,5 @@ public class ProfileTree {
 			preintTree(n, appender + appender);
 		}
 	}
-        
+       
 }

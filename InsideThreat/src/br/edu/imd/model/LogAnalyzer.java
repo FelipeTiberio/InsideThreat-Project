@@ -1,9 +1,7 @@
 package br.edu.imd.model;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,7 +27,7 @@ public class LogAnalyzer {
 		entries.clear();
 		try {
             System.out.println("Lendo o arquivo:" + filename);
-			filebr  = new FileInputStream(filename);
+			filebr = new FileInputStream(filename);
                         Scanner scanner = new Scanner(filebr);
                         scanner.useDelimiter("\\n"); 
 			String line;
@@ -46,8 +44,6 @@ public class LogAnalyzer {
 			System.out.println(e.getLocalizedMessage());
 		}catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println(e.getMessage());
-		}catch (IOException e) {
-			System.out.println(e.getCause());
 		}finally {
 			if(filebr != null) {
 				try {

@@ -170,6 +170,67 @@ public class Controller {
 	}
 	
 	/**
+	 * Método public usado para salvar todos árvores em um arquivo.
+	 * Lembrando que cada ProfileTree terá um arquivo diferente.
+	 * Onde, cada nome de arquivo será "userId".csv
+	 */
+	public void saveForest() {
+            for(ProfileTree user : this.keep.getUsers()) {
+            	this.saveTree(user);
+            }	
+	}
+	
+	/**
+	 * Método utilizado para chamar método saveTree de um único usuário.
+	 * @param name Nome do usuário a qual deseja ter seus dados salvos.
+	 */
+	public void saveProfile(String name) {
+		int n = this.keep.searchUser(name);
+		if( n >= 0) {
+			this.saveTree(this.keep.getUsers().get(n));
+			
+		}else {
+			System.out.print("**Usuário "+ name + " não está cadastrado.");
+		}
+	}
+	
+	/** 
+	 * Recebe um ProfileTree e guarda seus dados em um arquivo.
+	 * @param treeUser objeto profileTree que terá seus dados salvos.
+	 */
+	private void saveTree(ProfileTree treeUser ) {
+		try {
+			User user = treeUser.raiz().getData();
+			Histograma histo = treeUser.raiz().getHistogram();
+			String nomeArquivo = "../InsideThreat/DB/".concat(user.getUserId().replace("DTAA/", "")).concat(".csv");
+			File file = new File( nomeArquivo ); file.delete();
+			FileWriter fw = new FileWriter(nomeArquivo, true);
+			BufferedWriter conexao = new BufferedWriter(fw);
+			
+			for(String str : user.status()) { // Primeira linha do arquivo dados do user
+				conexao.write(str);
+			}
+			conexao.newLine();
+			conexao.write(Arrays.toString(histo.getHistograma()));
+			conexao.newLine();
+			
+			for(NodeTempo tempo : treeUser.raiz().getChildren()) {
+				for(NodePc pc : tempo.getChildren()) {
+					for(NodeActivity act : pc.getChildren()) {
+						for(String str : act.getData().status()) { // Primeira linha do arquivo dados do user
+							conexao.write(str);
+						}
+						conexao.newLine();
+					}
+				}
+			}
+			conexao.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
 	 * Método para visualização de histograma de um perfil médio.
 	 * Verifico se o histograma do perfil médio está atualizado primeiramente,
 	 * caso não, realizado a atualização.
@@ -236,69 +297,6 @@ public class Controller {
 	 */
 	public int qtdUsers() {
 		return keep.getUsers().size();
-	}
-	
-	/**
-	 * Método public usado para salvar todos árvores em um arquivo.
-	 * Lembrando que cada ProfileTree terá um arquivo diferente.
-	 * Onde, cada nome de arquivo será "userId".csv
-	 */
-	public void saveForest() {
-            for(ProfileTree user : this.keep.getUsers()) {
-            	this.saveTree(user);
-            }	
-	}
-	
-	/**
-	 * Método utilizado para chamar método saveTree de um único usuário.
-	 * @param name Nome do usuário a qual deseja ter seus dados salvos.
-	 */
-	public void saveProfile(String name) {
-		int n = this.keep.searchUser(name);
-		if( n >= 0) {
-			this.saveTree(this.keep.getUsers().get(n));
-			
-		}else {
-			System.out.print("**Usuário "+ name + " não está cadastrado.");
-		}
-	}
-	
-	/** 
-	 * Recebe um ProfileTree e guarda seus dados em um arquivo.
-	 * @param treeUser objeto profileTree que terá seus dados salvos.
-	 */
-	private void saveTree(ProfileTree treeUser ) {
-		try {
-			User user = treeUser.raiz().getData();
-			Histograma histo = treeUser.raiz().getHistogram();
-			String nomeArquivo = "../InsideThreat/DB/".concat(user.getUserId().replace("DTAA/", "")).concat(".csv");
-			File file = new File( nomeArquivo ); file.delete();
-			FileWriter fw = new FileWriter(nomeArquivo, true);
-			BufferedWriter conexao = new BufferedWriter(fw);
-			
-			for(String str : user.status()) { // Primeira linha do arquivo dados do user
-				conexao.write(str);
-			}
-			conexao.newLine();
-			conexao.write(Arrays.toString(histo.getHistograma()));
-			conexao.newLine();
-			
-			for(NodeTempo tempo : treeUser.raiz().getChildren()) {
-				for(NodePc pc : tempo.getChildren()) {
-					for(NodeActivity act : pc.getChildren()) {
-						for(String str : act.getData().status()) { // Primeira linha do arquivo dados do user
-							conexao.write(str);
-						}
-						conexao.newLine();
-					}
-				}
-			}
-			//conexao.newLine();
-			conexao.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 	}
 	
 	/**

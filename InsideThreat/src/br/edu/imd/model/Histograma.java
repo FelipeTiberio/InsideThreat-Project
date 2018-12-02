@@ -89,7 +89,4 @@ public class Histograma {
 	public void setAtt(boolean isAtt) {
 		this.isAtt = isAtt;
 	}
-	
-	
-	
 }

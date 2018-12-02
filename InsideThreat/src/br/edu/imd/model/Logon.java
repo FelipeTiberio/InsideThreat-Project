@@ -46,8 +46,8 @@ public class Logon extends Activity {
 
 	/**
 	 * Retorna todos os dados de device em um array de Strings
+	 * @return array de string com os dados de logon.
 	 */
-	
 	@Override
 	public String[] status() {
 		String campos[] = new String[5];
