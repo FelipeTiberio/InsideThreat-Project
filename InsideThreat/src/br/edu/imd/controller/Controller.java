@@ -90,7 +90,6 @@ public class Controller {
 	 * histogramas dos perfis médios.
 	 */
 	private void createDistanceValue() {
-		keep.attHistogram();
 		anomaly.enterDistanceValue();
 	}
 	
@@ -101,8 +100,10 @@ public class Controller {
 	 */
 	private boolean alreadyCreateDistanceValue() {
 		if(keep.getUsers().get(0).raiz().getData().getDistanceValue() == 0) {
+			System.out.println("Entrou aqui e retornou false");
 			return false;
 		} else {
+			System.out.println("Entrou aqui e retornou true");
 			return true;
 		}
 	}
@@ -237,7 +238,6 @@ public class Controller {
 	 * @param role papel do perfil médio desejado
 	 */
 	public void viewAverangeProfile(String role) {
-		keep.attHistogram();
 		if(keep.existAverangeProfile(role)) {
 			if(keep.getUsersAverangeProfile().get(role).getHistogram().isAtt()) {
 				Histograma histogram = keep.getUsersAverangeProfile().get(role).getHistogram();
@@ -258,7 +258,6 @@ public class Controller {
 	 * Método para visualização de todos os histograma de perfis médios.
 	 */
 	public void viewAllAverangeProfile() {
-		keep.attHistogram();
 		System.out.print("\n");
 		for(Map.Entry<String, NodeUser> users : keep.getUsersAverangeProfile().entrySet()) {
 			Histograma histogram = users.getValue().getHistogram();
@@ -290,7 +289,6 @@ public class Controller {
 			} else {
 				System.out.println("Não existe perfil médio desse papel.");
 			}
-
 		} else {
 			createDistanceValue();
 			showRanking(role);		
@@ -315,5 +313,12 @@ public class Controller {
 		} else
 			return true;
 	}
-        	
+	
+	/**
+	 * Método que faz a atualização dos valores de todos os histogramas do perfil médio.
+	 */
+	public void attHistogram() {
+		keep.attHistogram();
+	}
+      	
 }

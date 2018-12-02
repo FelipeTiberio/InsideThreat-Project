@@ -159,13 +159,15 @@ public class KeepTrees {
     	}
     }
     
+    
     /**
      * Método que a atualização de um hitstograma específico
      * @param role papel a qual perfil médio terá o histograma atualizado
-     */
+     
     public void attHistogram(String role) {
     	usersAverangeProfile.get(role).attValuesAvernageProfile();
     }
+    */
 	
 	/**
 	 *  Retorna o arrayList que armazena as árvores de cada usuário
@@ -196,7 +198,6 @@ public class KeepTrees {
      * @param nome nome do usuário a ser buscado
      * @return id da ProfileTree do usuário correspondente, caso não exista retorna -1;
      */
-    
     public int searchUser(String name) {
     	int n = 0;
     	for(ProfileTree user : this.users) {
@@ -205,7 +206,6 @@ public class KeepTrees {
     		}
     		n++;	
     	}
-    	
     	return -1;
     }
 }

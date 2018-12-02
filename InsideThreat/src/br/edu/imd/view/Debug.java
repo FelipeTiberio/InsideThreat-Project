@@ -14,6 +14,7 @@ public class Debug {
 
         Controller controle = new Controller();
         Scanner scan = new Scanner(System.in);
+        int aux = 0;
      
         controle.createUsers("../InsideThreat/Data/LDAP.csv");	
         System.out.println("Usuários criados.");
@@ -22,6 +23,14 @@ public class Debug {
         String entrada = "";
         
         while(entrada != "0") {
+        	
+        	// Maneira de só atualizar os dados do histograma uma única vez.
+        	// Levando em consideração, que os métodos de criação de atividades vão ser chamados em grupos, 
+        	// ou seja, somente todo o tempo ou somente em um períoo específico.
+        	if(aux==2 || aux==3) {
+        		controle.attHistogram();
+        		aux = 0;
+        	}
         
         	System.out.println("\n------ DIGITE O NÚMERO CORRESPONDENTE A AÇÃO QUE DESEJA ------");
         	System.out.println("(1)  - CRIAR ATIVIDADES DE LOGON");
@@ -45,6 +54,7 @@ public class Debug {
         		case "1": {
         			if(controle.existUsers()) {
         				controle.createLogon("../InsideThreat/Data/logon.csv");
+        				aux++;
         			} else {
         				System.out.println("Não existe usuários cadastrados.");
         			}
@@ -53,6 +63,7 @@ public class Debug {
         		case "2": {
         			if(controle.existUsers()){
         				controle.createDevices("../InsideThreat/Data/device.csv");
+        				aux++;
         			} else {
         				System.out.println("Não existe usuários cadastrados.");
         			}
@@ -61,6 +72,7 @@ public class Debug {
         		case "3": {
         			if(controle.existUsers()) {
         				controle.createHttp("../InsideThreat/Data/http.csv");
+        				aux++;
         			} else {
         				System.out.println("Não existe usuários cadastrados.");
         			}	
@@ -74,6 +86,7 @@ public class Debug {
         					System.out.println("Digite a data final: ");
         					String finalDate = scan.nextLine();
         					controle.createLogon("../InsideThreat/Data/logon.csv", dateOne, finalDate);
+        					aux++;
         				} catch(Exception e) {
         					e.getMessage();
         				}
@@ -90,6 +103,7 @@ public class Debug {
         					System.out.println("Digite a data final: ");
         					String finalDate = scan.nextLine();
         					controle.createDevices("../InsideThreat/Data/device.csv", dateOne, finalDate);
+        					aux++;
         				} catch(Exception e) {
         					e.getMessage();
         				} 
@@ -106,6 +120,7 @@ public class Debug {
         					System.out.println("Digite a data final: ");
         					String finalDate = scan.nextLine();
         					controle.createHttp("../InsideThreat/Data/http.csv", dateOne, finalDate);
+        					aux++;
         				} catch(Exception e) {
         					e.getMessage();
         				}
