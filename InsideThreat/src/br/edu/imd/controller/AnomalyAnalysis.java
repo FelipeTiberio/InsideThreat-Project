@@ -32,32 +32,39 @@ public class AnomalyAnalysis {
 	 */
 	public boolean analyzeUser(String name) {
 		
-		User user = new User();
-		for(ProfileTree users : keep.getUsers()) {
-			if(users.raiz().getData().getEmployerName().equals(name)) {
-				user = users.raiz().getData();
-			}
-		}
-		
-		if(keep.existUser(user.getEmployerName()) && keep.existAverangeProfile(user.getRole())) {	
-			int contAux = 0;
-			double valueAux = 0;
+		if(keep.existUser(name)) {
 			
-			for(ProfileTree nodeUser : keep.getUsers()) {
-				if(nodeUser.raiz().getData().getRole().equals(user.getRole())) {
-					contAux++;
-					valueAux += nodeUser.raiz().getData().getDistanceValue();
+			User user = new User();
+			for(ProfileTree users : keep.getUsers()) {
+				if(users.raiz().getData().getEmployerName().equals(name)) {
+				user = users.raiz().getData();
 				}
 			}
 			
-			valueAux = valueAux/contAux;
-			if(user.getDistanceValue() <= valueAux && user.getDistanceValue() > 0) {
-				return false;
-			}
+			if(keep.existAverangeProfile(user.getRole())) {	
+				int contAux = 0;
+				double valueAux = 0;
+				
+				for(ProfileTree nodeUser : keep.getUsers()) {
+					if(nodeUser.raiz().getData().getRole().equals(user.getRole())) {
+						contAux++;
+						valueAux += nodeUser.raiz().getData().getDistanceValue();
+					}
+				}
+				
+				valueAux = valueAux/contAux;
+				if(user.getDistanceValue() <= valueAux && user.getDistanceValue() > 0) {
+					return false;
+				}
+				
+			} 	else {
+					System.out.println("Não existe histograma de perfil médio do seu"
+						+ " papel definido.");
+				}
 			
-		} 	else {
-				System.out.println("Usário não existe ou não existe histograma de perfil médio do seu"
-					+ " papel definido.");
+		} else {
+			System.out.println("Não existe usuário com esse nome.");
+		
 		}
 		return true;		
 	}
