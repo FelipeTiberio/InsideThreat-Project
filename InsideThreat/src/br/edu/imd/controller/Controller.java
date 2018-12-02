@@ -277,18 +277,22 @@ public class Controller {
 	 */
 	public void showRanking(String role){
 		if(alreadyCreateDistanceValue()) {
-			ArrayList<User> ranking = anomaly.createRanking(role);
-			System.out.println("\n----- Ranking de usuários do papel " + role + " -----");
-			for(int i = 0; i < ranking.size(); i++) {
-				System.out.println(i+1 + " - " + ranking.get(i).getEmployerName() + " - Value: " + 
-				ranking.get(i).getDistanceValue());
+			if(keep.existAverangeProfile(role)) {
+				ArrayList<User> ranking = anomaly.createRanking(role);
+				System.out.println("\n----- Ranking de usuários do papel " + role + " -----");
+				for(int i = 0; i < ranking.size(); i++) {
+					System.out.println(i+1 + " - " + ranking.get(i).getEmployerName() + " - Value: " + 
+					ranking.get(i).getDistanceValue());
+				}
+				System.out.print("\n");
+			} else {
+				System.out.println("Não existe perfil médio desse papel.");
 			}
-			System.out.print("\n");
+
 		} else {
 			createDistanceValue();
 			showRanking(role);		
 		}
-
 	}
 	
 	/**
