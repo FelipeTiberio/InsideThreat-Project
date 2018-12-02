@@ -49,7 +49,7 @@ public class BildPerfil {
 				user_id 	  = line[1];
 				email		  = line[2];
 				domain 		  = line[3];
-				role 		  = line[4];
+				role 		  = line[4].replace(line[4].substring(line[4].length()-1, line[4].length()),"");
 
 				user = new User(employer_name, user_id, email, domain, role.replace(role.substring(role.length()-1, role.length()),""));
 				users.add(user);
@@ -86,7 +86,7 @@ public class BildPerfil {
 				date = line[1];
 				user = line[2];
 				pc   = line[3];
-				url  = line[4];
+				url  = line[4].replace(line[4].substring(line[4].length()-1, line[4].length()),"");
 
 				auxHttp = new Http(id, date, user, pc, url);
 				http.add(auxHttp);
@@ -139,7 +139,7 @@ public class BildPerfil {
 					date = line[1];
 					user = line[2];
 					pc   = line[3];
-					url  = line[4];
+					url  = line[4].replace(line[4].substring(line[4].length()-1, line[4].length()),"");
 
 					auxHttp = new Http(id, date, user, pc, url);
 					http.add(auxHttp);
@@ -177,7 +177,7 @@ public class BildPerfil {
 				date 	 = line[1];
 				user 	 = line[2];
 				pc       = line[3];
-				activity = line[4];
+				activity = line[4].replace(line[4].substring(line[4].length()-1, line[4].length()),"");
 
 				auxLogon = new Logon(id, date, user, pc, activity);
 				logon.add(auxLogon);
@@ -229,7 +229,7 @@ public class BildPerfil {
 					date 	 = line[1];
 					user 	 = line[2];
 					pc       = line[3];
-					activity = line[4];
+					activity = line[4].replace(line[4].substring(line[4].length()-1, line[4].length()),"");
 
 					auxLogon = new Logon(id, date, user, pc, activity);
 					logon.add(auxLogon);
@@ -267,7 +267,7 @@ public class BildPerfil {
 				date 	 = line[1];
 				user 	 = line[2];
 				pc 		 = line[3];
-				activity = line[4];
+				activity = line[4].replace(line[4].substring(line[4].length()-1, line[4].length()),"");
 
 				auxDevice = new Devices(id, date, user, pc, activity);
 				device.add(auxDevice);
@@ -319,7 +319,7 @@ public class BildPerfil {
 					date 	 = line[1];
 					user 	 = line[2];
 					pc 		 = line[3];
-					activity = line[4];
+					activity = line[4].replace(line[4].substring(line[4].length()-1, line[4].length()),"");
 
 					auxDevice = new Devices(id, date, user, pc, activity);
 					device.add(auxDevice);

@@ -41,7 +41,7 @@ public class Devices  extends Activity{
 	 */
     @Override
     public String toString() {
-        return "[Devices =" + this.getId() + "]";
+        return "[Devices =" + this.getActivity() + "]";
     }
     
     /**
