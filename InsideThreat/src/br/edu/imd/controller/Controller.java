@@ -237,6 +237,7 @@ public class Controller {
 	 * @param role papel do perfil médio desejado
 	 */
 	public void viewAverangeProfile(String role) {
+		keep.attHistogram();
 		if(keep.existAverangeProfile(role)) {
 			if(keep.getUsersAverangeProfile().get(role).getHistogram().isAtt()) {
 				Histograma histogram = keep.getUsersAverangeProfile().get(role).getHistogram();
@@ -257,6 +258,7 @@ public class Controller {
 	 * Método para visualização de todos os histograma de perfis médios.
 	 */
 	public void viewAllAverangeProfile() {
+		keep.attHistogram();
 		System.out.print("\n");
 		for(Map.Entry<String, NodeUser> users : keep.getUsersAverangeProfile().entrySet()) {
 			Histograma histogram = users.getValue().getHistogram();
