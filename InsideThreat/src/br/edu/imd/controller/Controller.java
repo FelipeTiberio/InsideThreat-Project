@@ -22,7 +22,7 @@ public class Controller {
 	/**
 	 * Construtor da classe Controller, inicializando os objetos.
 	 */
-	Controller(){
+	public Controller(){
 		bild = new BildPerfil();
 		keep= new KeepTrees();
 		anomaly = new AnomalyAnalysis(keep);
@@ -41,7 +41,7 @@ public class Controller {
 	 * @param wayFile caminho do arquivo com os dados dos usuários
 	 */
 	public void createHttp(String wayFile) {
-		keep.addActivity(bild.buildHttp(wayFile));
+		keep.addActivity(bild.buildHttp(wayFile));	
 	}
 	
 	/**
@@ -86,12 +86,25 @@ public class Controller {
 	
 	/**
 	 * Método para criação dos valores de distância entre o histograma dos usários com 
-	 * os dos perfis médios de cada papel. Antes realizo a atulização dos valores dos 
+	 * os dos perfis médios de cada papel. Antes realiza a atulização dos valores dos 
 	 * histogramas dos perfis médios.
 	 */
-	public void createDistanceValue() {
+	private void createDistanceValue() {
 		keep.attHistogram();
 		anomaly.enterDistanceValue();
+	}
+	
+	/**
+	 * Método para verficiar se os valores de distância euclidiana dos usuários já foram claculados.
+	 * @return boolean que é verdade caso o valor do primeiro user não for igual a zero, valor inicializado no user, 
+	 * e falso caso contrário.
+	 */
+	private boolean alreadyCreateDistanceValue() {
+		if(keep.getUsers().get(0).raiz().getData().getDistanceValue() == 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 	
 	/**
@@ -99,11 +112,16 @@ public class Controller {
 	 * @param user usuário a ser verificado
 	 */
 	public void searchAnomaly(String name) {
-		if(anomaly.analyzeUser(name)) {
-			 System.out.println("O usuário " + name + " é uma anomalia!");
-		 } else {
-			 System.out.println("O usuário " + name + " não é uma anomalia!");
-		 }
+		if(alreadyCreateDistanceValue()) {
+			if(anomaly.analyzeUser(name)) {
+				 System.out.println("O usuário " + name + " é uma anomalia!");
+			 } else {
+				 System.out.println("O usuário " + name + " não é uma anomalia!");
+			 }
+		} else {
+			createDistanceValue();
+			searchAnomaly(name);
+		}
 	}
 		
 	/**
@@ -118,7 +136,7 @@ public class Controller {
 				}
 			}
 		} else {
-			System.out.println("Não existe user com esse id");
+			System.out.println("Não existe user com esse nome");
 		}
 	}
 	
@@ -197,13 +215,19 @@ public class Controller {
 	 * os valores mais próximo de zero.
 	 */
 	public void showRanking(String role){
-		ArrayList<User> ranking = anomaly.createRanking(role);
-		System.out.println("\n----- Ranking de usuários do papel " + role + " -----");
-		for(int i = 0; i < ranking.size(); i++) {
-			System.out.println(i+1 + " - " + ranking.get(i).getEmployerName() + " - Value: " + 
-			ranking.get(i).getDistanceValue());
+		if(alreadyCreateDistanceValue()) {
+			ArrayList<User> ranking = anomaly.createRanking(role);
+			System.out.println("\n----- Ranking de usuários do papel " + role + " -----");
+			for(int i = 0; i < ranking.size(); i++) {
+				System.out.println(i+1 + " - " + ranking.get(i).getEmployerName() + " - Value: " + 
+				ranking.get(i).getDistanceValue());
+			}
+			System.out.print("\n");
+		} else {
+			createDistanceValue();
+			showRanking(role);		
 		}
-		System.out.print("\n");
+
 	}
 	
 	/**
@@ -275,6 +299,17 @@ public class Controller {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	/**
+	 * Método para verificar se os usuários já foram cadastrados
+	 * @return boolean que é verdadeiro caso o linkedList nmão esteja vazio e falso caso esteja.
+	 */
+	public boolean existUsers() {
+		if(keep.getUsers().isEmpty()) {
+			return false;
+		} else
+			return true;
 	}
         	
 }
