@@ -235,7 +235,7 @@ public class Controller {
 	 * @param treeUser
 	 */
 	
-	public void saveTree(ProfileTree treeUser ) {
+	private void saveTree(ProfileTree treeUser ) {
 		try {
 			User user = treeUser.raiz().getData();
 			Histograma histo = treeUser.raiz().getHistogram();
@@ -251,7 +251,6 @@ public class Controller {
 			conexao.write(Arrays.toString(histo.getHistograma()));
 			conexao.newLine();
 			
-			
 			for(NodeTempo tempo : treeUser.raiz().getChildren()) {
 				for(NodePc pc : tempo.getChildren()) {
 					for(NodeActivity act : pc.getChildren()) {
@@ -262,20 +261,23 @@ public class Controller {
 					}
 				}
 			}
-	
-			
 			//conexao.newLine();
 			conexao.close();
-			
-			
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	   
-	   
 		
-	}	
+	}
+	
+	public void salvarPerfil(String nome) {
+		int n = this.keep.buscaUserPorNome(nome);
+		if( n >= 0) {
+			this.saveTree(this.keep.getUsers().get(n));
+			
+		}else {
+			System.out.print("**Usuário "+ nome + " não está cadastrado.");
+		}
+		
+	}
         	
 }

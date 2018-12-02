@@ -191,4 +191,21 @@ public class KeepTrees {
     		System.out.println(user.raiz().getData().getEmployerName());
     	}
     }
+    /**
+     * Retorna o id de uma ProfileTree a partir do nome do user
+     * @param nome nome do usuário a ser buscado
+     * @return id da ProfileTree do usuário correspondente, caso não exista retorna -1;
+     */
+    
+    public int buscaUserPorNome(String nome) {
+    	int n = 0;
+    	for(ProfileTree user : this.users) {
+    		if(user.raiz().getData().getEmployerName().equals(nome)) {
+    			return n;
+    		}
+    		n++;	
+    	}
+    	
+    	return -1;
+    }
 }

@@ -53,7 +53,8 @@ public class Debug {
         /***
          * Teste para a escrita das árvores em um arquivo
          */
-        controle.saveForest();
+        //controle.saveForest();
+         controle.salvarPerfil("Castor L Nelson");
         
         
     }
