@@ -79,23 +79,4 @@ public class NodePc implements Node<Pc,Activity>{
  		return children;
  	}
 
-	/**
-	 * Método debug para imprimir a árvore @TODO lembrar de pagar
-	 * É NECESSÁRIO IMPLEMENTAR O MÉTODO TO STRING DE CADA NO QUE ESTÁ EM DATA
-	 */
-	/*
-	public  void printTree(String separador) {
-		_preintTree(this, separador);
-	}*/
-
-	/**
-	 * Método debug para imprimir a árvore @TODO lembrar de pagar
-	 * @param separador
-	 */
-	/*
-	public static <T> void _preintTree(NodeTempo node, String appender) {
-		System.out.println(appender + node.getData());
-		   node.getChildren().forEach(each -> _preintTree(each, appender + appender));
-	}*/
-
 }
